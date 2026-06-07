@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TimeLink</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<class="princess">
+
+<header>
+<h1>TimeLink</h1>
+<p></p>
+</header>
+
+<div id="userInfo">
+    <button id="loginBtn" onclick="login()">
+        ログイン
+    </button>
+
+<div id="profile" style="display:none;">
+    <img id="userPhoto" width="50">
+    <p id="userName"></p>
+    <button onclick="logout()">
+    ログアウト
+    </button>
+</div>
+</div>
+
+<div class="menu">
+
+<button onclick="location.href='calender.html'">
+📅 カレンダー
+</button>
+
+<button onclick="setPrincess()">👑 Princess Mode</button>
+<button onclick="setPrince()">🤴 Prince Mode</button>
+
+</div>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>

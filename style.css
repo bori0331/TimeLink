@@ -1,0 +1,101 @@
+@media(max-width:600px){
+
+    h1{
+        font-size:28px;
+    }
+
+    .day{
+        font-size:12px;
+        min-height:60px;
+        padding:8px 2px;
+    }
+
+    button{
+        width:90%;
+    }
+
+    input,select{
+        width:90%;
+    }
+}
+
+body{
+font-family:sans-serif;
+margin:0;
+padding:20px;
+text-align:center;
+transition:0.4s;
+}
+
+header{
+margin-top:20px;
+}
+
+.menu{
+margin-top:40px;
+}
+
+#calendar{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:5px;
+max-width:100%;
+margin:20px auto;
+}
+
+.day{
+padding:10px 15px;
+border-radius:10px;
+font-size:14px;
+min-height: 70px;
+}
+
+.event{
+font-size:12px;
+margin-top:5px;
+}
+
+/* Princess */
+
+body.princess{
+background:#fff0f6;
+color:#ff4fa3;
+}
+
+body.princess .day{
+background:white;
+box-shadow:0 0 10px rgba(255,100,150,0.2);
+}
+
+/* Prince */
+
+body.prince{
+background:#0f0f14;
+color:#00eaff;
+}
+
+body.prince .day{
+background:#1a1a22;
+box-shadow:0 0 10px rgba(0,255,255,0.2);
+}
+
+button{
+padding:12px 18px;
+margin:5px;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+}
+
+input,select{
+padding:8px;
+margin:5px;
+}
+
+.today{
+border:3px solid #ff4fa3;
+box-shadow:0 0 15px rgba(255,79,163,.4);
+border-radius:15px;
+font-weight:bold;
+}
