@@ -93,6 +93,18 @@ padding:8px;
 margin:5px;
 }
 
+.weekdays{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+text-align:center;
+font-weight:bold;
+margin-top:20px;
+}
+
+.weekdays div{
+padding:10px;
+}
+
 .today{
 border:3px solid #ff4fa3;
 box-shadow:0 0 15px rgba(255,79,163,.4);
