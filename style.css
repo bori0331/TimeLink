@@ -49,6 +49,25 @@ max-width:100%;
 margin:auto;
 }
 
+.calendar-header{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+margin:20px 0;
+}
+
+.calendar-header h2{
+margin:0;
+min-width:120px;
+}
+
+.calendar-header button{
+width:50px;
+padding:10px;
+font-size:18px;
+}
+
 .day{
 padding:10px 5px;
 border-radius:10px;
