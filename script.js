@@ -194,6 +194,8 @@ ${eventHTML}
 
 async function addEvent(){
 
+alert("addEvent動いた！");
+
 const date = document.getElementById("eventDate").value
 const type = document.getElementById("eventType").value
 const text = document.getElementById("eventText").value
