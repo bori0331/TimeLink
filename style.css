@@ -111,3 +111,7 @@ box-shadow:0 0 15px rgba(255,79,163,.4);
 border-radius:15px;
 font-weight:bold;
 }
+
+.today{
+    border:3px solid gold;
+}
