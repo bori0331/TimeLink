@@ -209,6 +209,10 @@ localStorage.setItem("events", JSON.stringify(events))
 
 const user = auth.currentUser;
 
+console.log("user =", user);
+
+try{
+
 if(user){
 
    console.log("Firestore保存開始");
@@ -221,6 +225,17 @@ if(user){
    );
 
    console.log("Firestore保存成功");
+
+}else{
+
+   console.log("ログインしてない");
+
+}
+
+}catch(error){
+
+   console.error("Firestoreエラー", error);
+
 }
 
 console.log(events)
