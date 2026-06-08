@@ -5,7 +5,11 @@ getAuth,
 GoogleAuthProvider,
 signInWithPopup,
 signOut,
-onAuthStateChanged
+onAuthStateChanged,
+getFirestore,
+doc,
+setDoc,
+getDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -21,6 +25,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
+
+const db = getFirestore(app);
 
 const provider = new GoogleAuthProvider();
 provider.setCustomParameters({
@@ -181,7 +187,7 @@ ${eventHTML}
 
 }
 
-function addEvent(){
+async function addEvent(){
 
 const date = document.getElementById("eventDate").value
 const type = document.getElementById("eventType").value
@@ -195,6 +201,22 @@ if(type==="anniversary") icon="🎁"
 events[date] = icon+" "+text
 
 localStorage.setItem("events", JSON.stringify(events))
+
+const user = auth.currentUser;
+
+if(user){
+
+   console.log("Firestore保存開始");
+
+   await setDoc(
+      doc(db,"users",user.uid),
+      {
+         events: events
+      }
+   );
+
+   console.log("Firestore保存成功");
+}
 
 console.log(events)
 
