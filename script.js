@@ -5,12 +5,15 @@ getAuth,
 GoogleAuthProvider,
 signInWithPopup,
 signOut,
-onAuthStateChanged,
+onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+import {
 getFirestore,
 doc,
 setDoc,
 getDoc
-} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCNpU_CoLgRaNmOgGhQPvf_GUOhxMYcjc0",
@@ -205,12 +208,17 @@ localStorage.setItem("events", JSON.stringify(events))
 const user = auth.currentUser;
 
 if(user){
+
+   console.log("Firestore保存開始");
+
    await setDoc(
-    doc(db,"users",user.uid),
-    {
-      events: events
-    }
+      doc(db,"users",user.uid),
+      {
+         events: events
+      }
    );
+
+   console.log("Firestore保存成功");
 }
 
 console.log(events)
