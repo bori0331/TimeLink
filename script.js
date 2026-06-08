@@ -205,17 +205,12 @@ localStorage.setItem("events", JSON.stringify(events))
 const user = auth.currentUser;
 
 if(user){
-
-   console.log("Firestore保存開始");
-
    await setDoc(
-      doc(db,"users",user.uid),
-      {
-         events: events
-      }
+    doc(db,"users",user.uid),
+    {
+      events: events
+    }
    );
-
-   console.log("Firestore保存成功");
 }
 
 console.log(events)
