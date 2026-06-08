@@ -142,6 +142,8 @@ monthTitle.innerText = year + " / " + (month+1)
 
 function createCalendar(){
 
+console.log("createCalendar実行")
+
 const calendar = document.getElementById("calendar")
 
 if(!calendar) return
