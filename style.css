@@ -15,12 +15,21 @@
         padding:8px 2px;
     }
 
-    button{
+    .menu button{
+        width:90%;
+    }
+
+    .add-event button{
         width:90%;
     }
 
     input,select{
         width:90%;
+    }
+
+    .calendar-header button{
+        width:40px !important;
+        height:40px !important;
     }
 }
 
