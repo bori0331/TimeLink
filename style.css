@@ -98,8 +98,6 @@ font-size:12px;
 margin-top:5px;
 }
 
-/* Princess */
-
 body.princess{
 background:#fff0f6;
 color:#ff4fa3;
@@ -109,8 +107,6 @@ body.princess .day{
 background:white;
 box-shadow:0 0 10px rgba(255,100,150,0.2);
 }
-
-/* Prince */
 
 body.prince{
 background:#0f0f14;
