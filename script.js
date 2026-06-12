@@ -75,7 +75,7 @@ console.error(error)
 
 }
 
-onAuthStateChanged(auth, (user)=>{
+onAuthStateChanged(auth, async (user)=>{
 
 const loginBtn =
 document.getElementById("loginBtn")
@@ -97,7 +97,23 @@ user.displayName
 document.getElementById("userPhoto").src =
 user.photoURL
 
-}else{
+const docSnap = await getDoc(
+  doc(db, "user", user.uid)
+);
+
+if(docSnap.exists()){
+  
+  events = docSnap.data().events || {};
+
+  console.log("Firesore読み込み成功",events);
+
+  createCalendar();
+
+}
+
+}
+
+else{
 
 loginBtn.style.display = "block"
 
