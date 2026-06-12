@@ -97,9 +97,13 @@ user.displayName
 document.getElementById("userPhoto").src =
 user.photoURL
 
+console.log("Firestore取得開始");
+
 const docSnap = await getDoc(
   doc(db, "users", user.uid)
 );
+
+console.log("exists?", docSnap.exists());
 
 if(docSnap.exists()){
 
