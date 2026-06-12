@@ -91,7 +91,6 @@ if(loginBtn && profile){
 if(user){
 
 loginBtn.style.display = "none"
-
 profile.style.display = "block"
 
 document.getElementById("userName").textContent =
@@ -99,6 +98,17 @@ user.displayName
 
 document.getElementById("userPhoto").src =
 user.photoURL
+
+}else{
+
+loginBtn.style.display = "block"
+profile.style.display = "none"
+
+}
+
+}
+
+if(user){
 
 console.log("Firestore取得開始");
 
@@ -115,16 +125,6 @@ if(docSnap.exists()){
   console.log("Firesore読み込み成功",events);
 
   createCalendar();
-
-}
-
-}
-
-else{
-
-loginBtn.style.display = "block"
-
-profile.style.display = "none"
 
 }
 
