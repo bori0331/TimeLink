@@ -98,11 +98,11 @@ document.getElementById("userPhoto").src =
 user.photoURL
 
 const docSnap = await getDoc(
-  doc(db, "user", user.uid)
+  doc(db, "users", user.uid)
 );
 
 if(docSnap.exists()){
-  
+
   events = docSnap.data().events || {};
 
   console.log("Firesore読み込み成功",events);
