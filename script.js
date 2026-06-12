@@ -77,6 +77,9 @@ console.error(error)
 
 onAuthStateChanged(auth, async (user)=>{
 
+console.log("onAuthStateChanged発火");
+console.log(user);
+
 const loginBtn =
 document.getElementById("loginBtn")
 
