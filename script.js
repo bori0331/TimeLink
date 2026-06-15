@@ -13,7 +13,7 @@ getFirestore,
 doc,
 setDoc,
 getDoc,
-updataDoc,
+updateDoc,
 deleteField
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
@@ -395,11 +395,11 @@ async function joinCouple(){
     { merge: true }
   );
 
-  alert("CoupkeLink完了！")
-
-window.joinCouple = joinCouple;
+  alert("CoupleLink完了！")
 
 }
+
+window.joinCouple = joinCouple;
 
 async function unlinkCouple(){
 
@@ -423,6 +423,6 @@ async function unlinkCouple(){
 
   alert("CoupleLink解除完了");
 
-window.unlinkCouple = unlinkCouple;
-
 }
+
+window.unlinkCouple = unlinkCouple;
