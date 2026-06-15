@@ -246,7 +246,8 @@ if(user){
       doc(db,"users",user.uid),
       {
          events: events
-      }
+      },
+      { merge: true }
    );
 
    console.log("Firestore保存成功");
@@ -334,7 +335,8 @@ if(user){
     doc(db,"users",user.uid),
     {
       events: events
-    }
+    },
+    { merge: true }
   );
 
   console.log("Firestore削除保存成功");
@@ -367,7 +369,8 @@ async function createCouple(){
     {
       events: events,
       coupleId: coupleId
-    }
+    },
+    { merge: true }
   );
 
   alert("カップルコード: " + coupleId);
@@ -375,3 +378,23 @@ async function createCouple(){
 }
 
 window.createCouple = createCouple;
+
+async function joinCouple(){
+
+  const code = document.getElementById("coupleCode").value;
+
+  const user = auth.currentUser;
+
+  await setDoc(
+    doc(db,"users",user.uid),
+    {
+      coupleId: code
+    },
+    { merge: true }
+  );
+
+  alert("CoupkeLink完了！")
+
+window.joinCouple = joinCouple;
+
+}
