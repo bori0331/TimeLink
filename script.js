@@ -315,7 +315,7 @@ createCalendar()
 window.prevMonth = prevMonth;
 window.nextMonth = nextMonth;
 
-function deleteEvent(key){
+async function deleteEvent(key){
 
 if(confirm("予定を削除しますか？")){
 
@@ -325,6 +325,21 @@ localStorage.setItem(
 "events",
 JSON.stringify(events)
 )
+
+const user = auth.currentUser;
+
+if(user){
+
+  await setDoc(
+    doc(db,"users",user.uid),
+    {
+      events: events
+    }
+  );
+
+  console.log("Firestore削除保存成功");
+  
+}
 
 createCalendar()
 
