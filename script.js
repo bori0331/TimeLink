@@ -12,7 +12,9 @@ import {
 getFirestore,
 doc,
 setDoc,
-getDoc
+getDoc,
+updataDoc,
+deleteField
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -396,5 +398,31 @@ async function joinCouple(){
   alert("CoupkeLink完了！")
 
 window.joinCouple = joinCouple;
+
+}
+
+async function unlinkCouple(){
+
+  const user = auth.currentUser;
+
+  if(!user){
+    alert("ログインしてください");
+    return;
+  }
+
+  if(!confirm("CoupleLinkを解除しますか？")){
+    return;
+  }
+
+  await updateDoc(
+    doc(db,"users",user.uid),
+    {
+      coupleId: deleteField()
+    }
+  );
+
+  alert("CoupleLink解除完了");
+
+window.unlinkCouple = unlinkCouple;
 
 }
