@@ -338,7 +338,7 @@ if(user){
   );
 
   console.log("Firestore削除保存成功");
-  
+
 }
 
 createCalendar()
@@ -348,3 +348,30 @@ createCalendar()
 }
 
 window.deleteEvent = deleteEvent;
+
+async function createCouple(){
+  const user = auth.currentUser;
+
+  if(!user){
+    alert("ログインしてください");
+    return;
+  }
+
+  const coupleId =
+  Math.random().toString(36)
+  .substring(2,8)
+  .toUpperCase();
+
+  await setDoc(
+    doc(db,"users",user.uid),
+    {
+      events: events,
+      coupleId: coupleId
+    }
+  );
+
+  alert("カップルコード: " + coupleId);
+
+}
+
+window.createCoupple = createCouple;
