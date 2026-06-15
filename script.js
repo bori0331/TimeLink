@@ -383,7 +383,7 @@ window.createCouple = createCouple;
 
 async function joinCouple(){
 
-  const code = document.getElementById("coupleCode").value;
+  const code = document.getElementById("CoupleCode").value;
 
   const user = auth.currentUser;
 
