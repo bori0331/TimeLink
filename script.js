@@ -374,4 +374,4 @@ async function createCouple(){
 
 }
 
-window.createCoupple = createCouple;
+window.createCouple = createCouple;
