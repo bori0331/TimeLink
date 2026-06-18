@@ -355,6 +355,13 @@ window.deleteEvent = deleteEvent;
 
 async function createCouple(){
 
+  const user = auth.currentUser;
+
+  if(!user){
+    alert("ログインしてください");
+    return;
+  }
+
   const docSnap = await getDoc(
     doc(db,"users",user.uid)
   );
@@ -367,13 +374,6 @@ async function createCouple(){
     );
 
   return;
-  }
-
-  const user = auth.currentUser;
-
-  if(!user){
-    alert("ログインしてください");
-    return;
   }
 
   const coupleId =
@@ -402,13 +402,10 @@ async function joinCouple(){
   .value
   .trim();
 
-
   if(code === ""){
     alert("IDが未入力です。");
     return;
   }
-
-  const code = document.getElementById("CoupleCode").value;
 
   const user = auth.currentUser;
 
@@ -428,19 +425,22 @@ window.joinCouple = joinCouple;
 
 async function unlinkCouple(){
 
-  const docSnap = await getDoc(
-    doc(db,"users",user.uid)
-  );
-
-  if(!docSnap.data().coupleId){
-    alert("このアカウントはリンクしていません。")
-    return;
-  }
-
   const user = auth.currentUser;
 
   if(!user){
     alert("ログインしてください");
+    return;
+  }
+
+  const docSnap = await getDoc(
+    doc(db,"users",user.uid)
+  );
+
+  if(
+    !docSnap.exists() ||
+    !docSnap.data().coupleId
+  ){
+    alert("このアカウントはリンクしていません。")
     return;
   }
 
