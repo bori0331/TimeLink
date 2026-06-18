@@ -14,7 +14,11 @@ doc,
 setDoc,
 getDoc,
 updateDoc,
-deleteField
+deleteField,
+collection,
+query,
+where,
+getDocs
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -411,6 +415,18 @@ async function joinCouple(){
 
   if(!user){
     alert("ログインしてください。");
+    return;
+  }
+
+  const q = query(
+    collection(db,"users"),
+    where("coupleId","==",code)
+  );
+
+  const querySnapshot = await getDocs(q);
+
+  if(querySnapshot.empty){
+    alert("CoupleCodeが見つかりませんでした。");
     return;
   }
 
