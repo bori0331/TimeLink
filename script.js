@@ -409,6 +409,11 @@ async function joinCouple(){
 
   const user = auth.currentUser;
 
+  if(!user){
+    alert("ログインしてください。");
+    return;
+  }
+
   await setDoc(
     doc(db,"users",user.uid),
     {
