@@ -385,6 +385,13 @@ async function joinCouple(){
 
   const code = document.getElementById("CoupleCode").value;
 
+  if(code === ""){
+    alert("IDが未入力です。");
+    return;
+  }
+
+  const code = document.getElementById("CoupleCode").value;
+
   const user = auth.currentUser;
 
   await setDoc(
@@ -425,4 +432,4 @@ async function unlinkCouple(){
 
 }
 
-window.unlinkCouple = unlinkCouple;
+window.unlinkCouple = unlinkCouple; 
