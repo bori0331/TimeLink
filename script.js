@@ -354,6 +354,21 @@ createCalendar()
 window.deleteEvent = deleteEvent;
 
 async function createCouple(){
+
+  const docSnap = await getDoc(
+    doc(db,"users",user.uid)
+  );
+
+  if(docSnap.exists()
+    && docSnap.data().coupleId){
+    alert(
+      "すでにコードが発行されています。\n\n" +
+      docSnap.data().coupleId
+    );
+
+  return;
+  }
+
   const user = auth.currentUser;
 
   if(!user){
@@ -410,6 +425,15 @@ window.joinCouple = joinCouple;
 
 async function unlinkCouple(){
 
+  const docSnap = await getDoc(
+    doc(db,"users",user.uid)
+  );
+
+  if(!docSnap.data().coupleId){
+    alert("このアカウントはリンクしていません。")
+    return;
+  }
+
   const user = auth.currentUser;
 
   if(!user){
@@ -417,7 +441,8 @@ async function unlinkCouple(){
     return;
   }
 
-  if(!confirm("CoupleLinkを解除しますか？")){
+  if(!confirm(
+    "⚠ CoupleLinkを解除します。\n\n本当に解除しますか？")){
     return;
   }
 
