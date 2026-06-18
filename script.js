@@ -398,7 +398,10 @@ window.createCouple = createCouple;
 
 async function joinCouple(){
 
-  const code = document.getElementById("CoupleCode").value;
+  const code = document.getElementById("CoupleCode")
+  .value
+  .trim();
+
 
   if(code === ""){
     alert("IDが未入力です。");
