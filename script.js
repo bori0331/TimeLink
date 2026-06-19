@@ -430,6 +430,13 @@ async function joinCouple(){
     return;
   }
 
+  const foundUser = querySnapshot.docs[0];
+
+  if(foundUser.id === user.uid){
+    alert("自分が発行したコードは使用できません。");
+    return;
+  }
+
   await setDoc(
     doc(db,"users",user.uid),
     {
