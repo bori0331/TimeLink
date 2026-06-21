@@ -240,6 +240,13 @@ localStorage.setItem("events", JSON.stringify(events))
 
 const user = auth.currentUser;
 
+const docSnap = await getDoc(
+  doc(db,"users",user.uid)
+);
+
+const coupleId =
+docSnap.data().coupleId;
+
 console.log("user =", user);
 
 try{
@@ -249,7 +256,7 @@ if(user){
    console.log("Firestore保存開始");
 
    await setDoc(
-      doc(db,"users",user.uid),
+      doc(db,"couples",coupleId),
       {
          events: events
       },
