@@ -122,17 +122,28 @@ const docSnap = await getDoc(
   doc(db, "users", user.uid)
 );
 
-console.log("exists?", docSnap.exists());
+console.log("exists?", userSnap.exists());
 
-if(docSnap.exists()){
+if(userSnap.exists()){
 
-  events = docSnap.data().events || {};
+  const coupleId =
+  userSnap.data().coupleId;
 
-  console.log("Firesore読み込み成功",events);
+  if(coupleId){
 
-  createCalendar();
+    const coupleSnap = await getDoc(
+      doc(db,"couples",coupleId)
+    );
 
-}
+    if(coupleSnap.exists()){
+      
+      events = docSnap.data().events || {};
+      console.log("Firesore読み込み成功",events);
+      
+      createCalendar();
+    }
+    
+  }
 
 }
 
