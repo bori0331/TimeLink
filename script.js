@@ -118,7 +118,7 @@ if(user){
 
 console.log("Firestore取得開始");
 
-const docSnap = await getDoc(
+const userSnap = await getDoc(
   doc(db, "users", user.uid)
 );
 
@@ -135,15 +135,22 @@ if(userSnap.exists()){
       doc(db,"couples",coupleId)
     );
 
+    console.log(
+      "couple exists?",
+      coupleSnap.exists()
+    );
+
     if(coupleSnap.exists()){
       
-      events = docSnap.data().events || {};
+      events = coupleSnap.data().events || {};
       console.log("Firesore読み込み成功",events);
       
       createCalendar();
     }
     
   }
+
+}
 
 }
 
