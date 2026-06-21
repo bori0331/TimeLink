@@ -401,6 +401,8 @@ async function createCouple(){
     }
   );
 
+  console.log("couples作成成功");
+
   alert("カップルコード: " + coupleId);
 
 }
