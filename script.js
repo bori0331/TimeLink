@@ -365,7 +365,7 @@ if(user){
   const userSnap = await getDoc(
     doc(db,"users",user.uid)
   );
-
+  
   const coupleId =
   userSnap.data().coupleId;
 
