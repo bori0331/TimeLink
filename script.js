@@ -394,6 +394,13 @@ async function createCouple(){
     { merge: true }
   );
 
+  await setDoc(
+    doc(db,"couples",coipleId),
+    {
+      events: {}
+    }
+  );
+
   alert("カップルコード: " + coupleId);
 
 }
