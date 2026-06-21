@@ -362,8 +362,15 @@ const user = auth.currentUser;
 
 if(user){
 
+  const userSnap = await getDoc(
+    doc(db,"users",user.uid)
+  );
+
+  const coupleId =
+  userSnap.data().coupleId;
+
   await setDoc(
-    doc(db,"users",user.uid),
+    doc(db,"ucouples",coupleId),
     {
       events: events
     },
