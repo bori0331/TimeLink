@@ -359,68 +359,51 @@ window.deleteEvent = deleteEvent;
 
 async function createCouple(){
 
-  console.log("createCouple開始");
+  const user = auth.currentUser;
 
-  try{
-
-    const user = auth.currentUser;
-
-    if(!user){
-      alert("ログインしてください");
-      return;
-    }
-
-    const docSnap = await getDoc(
-      doc(db,"users",user.uid)
-    );
-
-    console.log("doc取得成功");
-
-    if(docSnap.exists()
-      && docSnap.data().coupleId){
-
-      alert(
-        "すでにコードが発行されています。\n\n" +
-        docSnap.data().coupleId
-      );
-
-      return;
-    }
-
-    const coupleId =
-    Math.random().toString(36)
-    .substring(2,8)
-    .toUpperCase();
-
-    console.log("コード生成成功");
-
-    await setDoc(
-      doc(db,"users",user.uid),
-      {
-        events: events,
-        coupleId: coupleId
-      },
-      { merge: true }
-    );
-
-    console.log("users保存成功");
-
-    await setDoc(
-      doc(db,"couples",coupleId),
-      {
-        events: {}
-      }
-    );
-
-    console.log("couples作成成功");
-
-    alert("カップルコード: " + coupleId);
-
-  }catch(error){
-
-    console.error("createCoupleエラー", error);
-
+  if(!user){
+    alert("ログインしてください");
+    return;
   }
+
+  const docSnap = await getDoc(
+    doc(db,"users",user.uid)
+  );
+
+  if(docSnap.exists()
+    && docSnap.data().coupleId){
+    alert(
+      "すでにコードが発行されています。\n\n" +
+      docSnap.data().coupleId
+    );
+
+  return;
+  }
+
+  const coupleId =
+  Math.random().toString(36)
+  .substring(2,8)
+  .toUpperCase();
+
+  await setDoc(
+    doc(db,"users",user.uid),
+    {
+      events: events,
+      coupleId: coupleId
+    },
+    { merge: true }
+  );
+
+  await setDoc(
+    doc(db,"couples",coupleId),
+    {
+      events: {}
+    }
+  );
+
+  console.log("couples作成成功");
+
+  alert("カップルコード: " + coupleId);
 
 }
 
