@@ -370,7 +370,7 @@ if(user){
   userSnap.data().coupleId;
 
   await setDoc(
-    doc(db,"couples",coupleIdd),
+    doc(db,"couples",coupleId),
     {
       events: events
     },
