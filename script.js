@@ -395,7 +395,7 @@ async function createCouple(){
   );
 
   await setDoc(
-    doc(db,"couples",coipleId),
+    doc(db,"couples",coupleId),
     {
       events: {}
     }
