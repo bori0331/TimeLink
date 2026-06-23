@@ -196,3 +196,21 @@ margin:0;
 cursor:pointer;
 
 }
+
+.bottom-nav .material-symbols-outlined{
+
+font-size: 36px;
+
+}
+
+.bottom-nav button{
+
+color:#777;
+
+}
+
+.bottom-nav button.active{
+
+color:#ff69b4;
+
+}
