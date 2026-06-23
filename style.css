@@ -229,9 +229,7 @@ background:rgba(255,255,255,.7);
 backdrop-filter:blur(10px);
 
 display:flex;
-
 justify-content:center;
-
 gap:30px;
 
 border-radius:30px;
@@ -240,7 +238,10 @@ padding:15px;
 
 width:fit-content;
 
-margin:20px 0;
+margin:20px auto;
+
+box-shadow:
+0 4px 15px rgba(0,0,0,.15);
 
 }
 
