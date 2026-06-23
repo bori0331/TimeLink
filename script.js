@@ -365,7 +365,7 @@ if(user){
   const userSnap = await getDoc(
     doc(db,"users",user.uid)
   );
-  
+
   const coupleId =
   userSnap.data().coupleId;
 
@@ -530,3 +530,14 @@ async function unlinkCouple(){
 }
 
 window.unlinkCouple = unlinkCouple; 
+
+function toggleMenu(){
+
+const menu =
+document.getElementById("sideMenu");
+
+menu.classList.toggle("open");
+
+}
+
+window.toggleMenu = toggleMenu;

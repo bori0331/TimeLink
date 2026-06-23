@@ -13,9 +13,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <body class="princess">
 
-<header>
+<header class="header">
+
 <h1>TimeLink</h1>
-<p></p>
+
+<button class="menu-btn"
+onclick="toggleMenu()">
+☰
+</button>
+
 </header>
 
 <main>
@@ -36,11 +42,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 </div>
 </div>
 
-<div class="menu">
-
-<button onclick="location.href='calendar.html'">
-    📅 カレンダー
-</button>
+<div class="menu" id=""sideMenu>
 
 <button onclick="setPrincess()">👑 Princess Mode
 </button>
