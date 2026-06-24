@@ -36,6 +36,13 @@ padding:20px;
 padding-bottom:140px;
 text-align:center;
 transition:0.4s;
+background:
+linear-gradient(
+135deg,
+#edf2ff,
+#f7f8ff,
+#e6edff
+);
 }
 
 header{
@@ -72,13 +79,22 @@ margin:10px auto;
 */
 
 .menu-btn{
-font-size:34px;
+width:40px;
+height:40px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+gap:6px;
 background:none;
 border:none;
-cursor:pointer;
-color:inherit;
-z-index:3000;
-position:relative;
+}
+
+.menu-btn span{
+width:28px;
+height:3px;
+background:#555;
+border-radius:10px;
+transition:.3s;
 }
 
 .menu-grid{
@@ -91,8 +107,10 @@ padding:100px 20px;
 display:grid;
 grid-template-columns:1fr 1fr;
 gap:16px;
-background:rgba(255,255,255,.75);
-backdrop-filter:blur(20px);
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(25px);
+-webkit-backdrop-filter:blur(25px);
+border-left:1px solid rgba(255,255,255,.5);
 transition:right .5s cubic-bezier(0.95,0,0.1,1);
 z-index:2000;
 clip-path:polygon(20% 0,100% 0,100% 100%,0 100%);
@@ -106,7 +124,10 @@ box-shadow:-10px 0 30px rgba(0,0,0,.25);
 
 .grid-card{
 height:160px;
-background:white;
+background:rgba(255,255,255,.65);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.6);
+box-shadow:0 8px 20px rgba(100,120,255,.12);
 border-radius:20px;
 display:flex;
 flex-direction:column;
@@ -115,7 +136,7 @@ align-items:center;
 cursor:pointer;
 box-shadow:0 4px 15px rgba(0,0,0,.08);
 clip-path:
-polygon(40px 0,100% 0,100% 100%,0 100%,0 40px);
+polygon(20px 0,100% 0,100% 100%,0 100%,0 20px);
 opacity:0;
 transform:translateX(50px);
 transition:transform .4s,opacity .4s;
@@ -173,6 +194,24 @@ transition-delay:.25s;
 .menu-grid.open .grid-card:nth-child(6){
 transition-delay:.3s;
 }
+
+
+.menu-btn.open span:nth-child(1){
+transform:
+rotate(45deg)
+translateY(13px);
+}
+
+.menu-btn.open span:nth-child(2){
+opacity:0;
+}
+
+.menu-btn.open span:nth-child(3){
+transform:
+rotate(-45deg)
+translateY(-13px);
+}
+
 
 .grid-card:hover{
 transform:translateX(0) translateY(-5px);
@@ -378,14 +417,15 @@ padding:0 20px;
 
 #overlay{
 position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:rgba(0,0,0,.3);
+inset:0;
+background:rgba(255,255,255,.15);
+
+backdrop-filter:
+blur(8px);
+-webkit-backdrop-filter:blur(8px);
 opacity:0;
 pointer-events:none;
-transition:.3s;
+transition:.4s;
 z-index:1500;
 }
 

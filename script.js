@@ -543,6 +543,18 @@ menu.classList.toggle("open");
 
 overlay.classList.toggle("show");
 
+document
+    .querySelector(".menu-grid")
+    .classList.toggle("open");
+
+    document
+    .querySelector(".menu-btn")
+    .classList.toggle("open");
+
+    document
+    .getElementById("overlay")
+    .classList.toggle("show");
+
 }
 
 window.toggleMenu = toggleMenu;
