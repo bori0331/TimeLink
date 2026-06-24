@@ -42,29 +42,73 @@ onclick="toggleMenu()">
 </div>
 </div>
 
-<div class="menu" id="sideMenu">
+<div class="menu-grid" id="sideMenu">
 
-<button onclick="setPrincess()">👑 Princess Mode
-</button>
-<button onclick="setPrince()">🤴 Prince Mode
-</button>
+    <button class="close-btn" onclick="closeMenu()">
+        ✕
+    </button>
 
-<button onclick="createCouple()">
-    ❤ CoupleCode
-</button>
+<div class="grid-card"
+onclick="location.href='calendar.html'">
 
-<input 
-    type="text"
-    id="CoupleCode"
-    placeholder="恋人コード">
+<span class="material-symbols-outlined">
+calendar_month
+</span>
 
-<button onclick="joinCouple()">
-    🔗 CoupleLink
-</button>
+<p>Calendar</p>
 
-<button onclick="unlinkCouple()">
-    💔 CoupleLink解除
-</button>
+</div>
+
+<div class="grid-card"
+onclick="location.href='chat.html'">
+
+<span class="material-symbols-outlined">
+chat
+</span>
+
+<p>Chat</p>
+
+</div>
+
+<div class="grid-card"
+onclick="location.href='profile.html'">
+
+<span class="material-symbols-outlined">
+person
+</span>
+
+<p>Profile</p>
+
+</div>
+
+<div class="grid-card"
+onclick="createCouple()">
+
+<span class="material-symbols-outlined">
+favorite
+</span>
+
+<p>Couple</p>
+
+</div>
+
+<div class="grid-card"
+onclick="setPrincess()">
+
+👑
+
+<p>Princess</p>
+
+</div>
+
+<div class="grid-card"
+onclick="setPrince()">
+
+🤴
+
+<p>Prince</p>
+
+</div>
 
 </div>
 

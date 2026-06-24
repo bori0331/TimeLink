@@ -46,6 +46,8 @@ header{
 margin-top:20px;
 }
 
+/*
+
 .menu{
 position:fixed;
 top:0;
@@ -61,6 +63,8 @@ z-index:2000;
 display:flex;
 flex-direction:column;
 }
+
+*/
 
 .menu.open{
 right:0;
@@ -79,6 +83,65 @@ position:relative;
 .menu button{
 width:90%;
 margin:10px auto;
+}
+
+.menu-grid{
+position:fixed;
+top:0;
+right:-100%;
+width:320px;
+height:100vh;
+padding:100px 20px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+background:rgba(255,255,255,.75);
+backdrop-filter:blur(20px);
+transition:right .45s cubic-bezier(0.95,0,0.1,1);
+z-index:2000;
+clip-path:polygon(20% 0,100% 0,100% 100%,0 100%);
+transition:
+right .5s cubic-bezier(0.95,0,0.1,1);
+}
+
+.menu-grid.open{
+right:0;
+}
+
+.grid-card{
+height:160px;
+background:white;
+border-radius:20px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 4px 15px rgba(0,0,0,.08);
+clip-path:
+polygon(20px 0,100% 0,100% 100%,0 100%,0 20px);
+}
+
+.grid-card:hover{
+transform:
+translateY(-5px);
+}
+
+.grid-card
+.material-symbols-outlined{
+font-size:48px;
+margin-bottom:10px;
+}
+
+.close-btn{
+position:absolute;
+top:30px;
+right:30px;
+font-size:32px;
+background:none;
+border:none;
+color:inherit;
 }
 
 #calendar{
