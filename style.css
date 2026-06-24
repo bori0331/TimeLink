@@ -47,14 +47,14 @@ margin-top:20px;
 }
 
 .menu{
-position:foxed;
+position:fixed;
 top:0;
 right:-300px;
 width:250px;
 height:100vh;
 padding-top:100px;
 background:rgba(255,255,255,.7);
-backdrop-filter:blue(15px);
+backdrop-filter:blur(15px);
 box-shadow:-5px 0 15px rgba(0,0,0,.1);
 transition:.3s;
 z-index:2000;
@@ -63,7 +63,6 @@ flex-direction:column;
 }
 
 .menu.open{
-display:block;
 right:0;
 }
 
@@ -73,7 +72,8 @@ background:none;
 border:none;
 cursor:pointer;
 color:inherit;
-z-index:300;
+z-index:3000;
+position:relative;
 }
 
 .menu button{
@@ -268,7 +268,7 @@ height:100%;
 background:rgba(0,0,0,.3);
 opacity:0;
 pointer-events:none;
-transition:3s;
+transition:.3s;
 z-index:1500;
 }
 
