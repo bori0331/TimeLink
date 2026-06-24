@@ -64,6 +64,13 @@ flex-direction:column;
 right:0;
 }
 
+.menu button{
+width:90%;
+margin:10px auto;
+}
+
+*/
+
 .menu-btn{
 font-size:34px;
 background:none;
@@ -73,13 +80,6 @@ color:inherit;
 z-index:3000;
 position:relative;
 }
-
-.menu button{
-width:90%;
-margin:10px auto;
-}
-
-*/
 
 .menu-grid{
 position:fixed;
