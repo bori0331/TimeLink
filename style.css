@@ -85,7 +85,7 @@ position:relative;
 position:fixed;
 top:0;
 right:-100%;
-width:min(420px,90vw);
+width:min(260px,65vw);
 height:100vh;
 padding:100px 20px;
 display:grid;
