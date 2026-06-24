@@ -157,6 +157,7 @@ border:none;
 border-radius:12px;
 cursor:pointer;
 font-size:16px;
+user-select:none;
 }
 
 input,select{
@@ -275,4 +276,22 @@ z-index:1500;
 #overlay.show{
 opacity:1;
 pointer-events:auto;
+}
+
+
+
+
+
+*{
+-webkit-tap-highlight-color: transparent;
+}
+
+button,
+a{
+-webkit-tap-highlight-color: transparent;
+outline:none;
+}
+
+button:active{
+transform:scale(.96);
 }
