@@ -1,8 +1,8 @@
 @media(max-width:600px){
 
     .calendar-header button{
-        width:50px;
-        height:50px;
+        width:40px;
+        height:40px;
     }
 
     h1{
@@ -27,10 +27,6 @@
         width:90%;
     }
 
-    .calendar-header button{
-        width:40px !important;
-        height:40px !important;
-    }
 }
 
 body{
@@ -64,8 +60,6 @@ display:flex;
 flex-direction:column;
 }
 
-*/
-
 .menu.open{
 right:0;
 }
@@ -85,11 +79,13 @@ width:90%;
 margin:10px auto;
 }
 
+*/
+
 .menu-grid{
 position:fixed;
 top:0;
 right:-100%;
-width:320px;
+width:min(320px,85vw);
 height:100vh;
 padding:100px 20px;
 display:grid;
@@ -97,15 +93,14 @@ grid-template-columns:1fr 1fr;
 gap:16px;
 background:rgba(255,255,255,.75);
 backdrop-filter:blur(20px);
-transition:right .45s cubic-bezier(0.95,0,0.1,1);
+transition:right .5s cubic-bezier(0.95,0,0.1,1);
 z-index:2000;
 clip-path:polygon(20% 0,100% 0,100% 100%,0 100%);
-transition:
-right .5s cubic-bezier(0.95,0,0.1,1);
 }
 
 .menu-grid.open{
 right:0;
+box-shadow:-10px 0 30px rgba(0,0,0,.25);
 }
 
 .grid-card{
@@ -117,19 +112,68 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 cursor:pointer;
-transition:.3s;
 box-shadow:0 4px 15px rgba(0,0,0,.08);
 clip-path:
-polygon(20px 0,100% 0,100% 100%,0 100%,0 20px);
+polygon(40px 0,100% 0,100% 100%,0 100%,0 40px);
+opacity:0;
+transform:translateX(50px);
+transition:transform .4s,opacity .4s;
+}
+
+.menu-grid.open .grid-card{
+opacity:1;
+transform:translateX(0);
+}
+
+body.prince .menu-grid{
+background:rgba(15,15,20,.8);
+backdrop-filter:blur(25px);
+border-left:1px solid rgba(0,234,255,.2);
+}
+
+body.prince .grid-card{
+background:#1a1a22;
+color:#00eaff;
+}
+
+body.prince .close-btn{
+color:#00eaff;
+}
+
+body.princess .grid-card{
+background:white;
+color:#ff4fa3;
+}
+
+.menu-grid.open .grid-card:nth-child(1){
+transition-delay:.05s;
+}
+
+.menu-grid.open .grid-card:nth-child(2){
+transition-delay:.1s;
+}
+
+.menu-grid.open .grid-card:nth-child(3){
+transition-delay:.15s;
+}
+
+.menu-grid.open .grid-card:nth-child(4){
+transition-delay:.2s;
+}
+
+.menu-grid.open .grid-card:nth-child(5){
+transition-delay:.25s;
+}
+
+.menu-grid.open .grid-card:nth-child(6){
+transition-delay:.3s;
 }
 
 .grid-card:hover{
-transform:
-translateY(-5px);
+transform:translateX(0) translateY(-5px);
 }
 
-.grid-card
-.material-symbols-outlined{
+.grid-card .material-symbols-outlined{
 font-size:48px;
 margin-bottom:10px;
 }
