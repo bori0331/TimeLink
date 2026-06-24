@@ -533,39 +533,32 @@ window.unlinkCouple = unlinkCouple;
 
 function toggleMenu(){
 
-    const menu =
-    document.getElementById("sideMenu");
-
-    const overlay =
-    document.getElementById("overlay");
-
-    menu.classList.toggle("open");
-
-    overlay.classList.toggle("show");
+    document
+        .getElementById("sideMenu")
+        .classList.toggle("open");
 
     document
-        .querySelector(".menu-grid")
-        .classList.toggle("open");
+        .getElementById("overlay")
+        .classList.toggle("show");
 
     document
         .querySelector(".menu-btn")
         .classList.toggle("open");
 }
 
-window.toggleMenu = toggleMenu;
-
 function closeMenu(){
 
-const menu =
-document.getElementById("sideMenu");
+    document
+        .getElementById("sideMenu")
+        .classList.remove("open");
 
-const overlay =
-document.getElementById("overlay");
+    document
+        .getElementById("overlay")
+        .classList.remove("show");
 
-menu.classList.remove("open");
-
-overlay.classList.remove("show");
-
+    document
+        .querySelector(".menu-btn")
+        .classList.remove("open");
 }
 
 window.closeMenu = closeMenu;
