@@ -533,28 +533,23 @@ window.unlinkCouple = unlinkCouple;
 
 function toggleMenu(){
 
-const menu =
-document.getElementById("sideMenu");
+    const menu =
+    document.getElementById("sideMenu");
 
-const overlay =
-document.getElementById("overlay");
+    const overlay =
+    document.getElementById("overlay");
 
-menu.classList.toggle("open");
+    menu.classList.toggle("open");
 
-overlay.classList.toggle("show");
-
-document
-    .querySelector(".menu-grid")
-    .classList.toggle("open");
+    overlay.classList.toggle("show");
 
     document
-    .querySelector(".menu-btn")
-    .classList.toggle("open");
+        .querySelector(".menu-grid")
+        .classList.toggle("open");
 
     document
-    .getElementById("overlay")
-    .classList.toggle("show");
-
+        .querySelector(".menu-btn")
+        .classList.toggle("open");
 }
 
 window.toggleMenu = toggleMenu;

@@ -110,10 +110,11 @@ gap:16px;
 background:rgba(255,255,255,.45);
 backdrop-filter:blur(25px);
 -webkit-backdrop-filter:blur(25px);
+box-shadow:-20px 0 50px rgba(100,120,255,.12);
 border-left:1px solid rgba(255,255,255,.5);
 transition:right .5s cubic-bezier(0.95,0,0.1,1);
 z-index:2000;
-clip-path:polygon(20% 0,100% 0,100% 100%,0 100%);
+clip-path:polygon(30% 0,100% 0,100% 100%,0 100%);
 overflow-y:auto;
 }
 
@@ -123,7 +124,7 @@ box-shadow:-10px 0 30px rgba(0,0,0,.25);
 }
 
 .grid-card{
-height:160px;
+height:120px;
 background:rgba(255,255,255,.65);
 backdrop-filter:blur(10px);
 border:1px solid rgba(255,255,255,.6);
@@ -134,9 +135,8 @@ flex-direction:column;
 justify-content:center;
 align-items:center;
 cursor:pointer;
-box-shadow:0 4px 15px rgba(0,0,0,.08);
 clip-path:
-polygon(20px 0,100% 0,100% 100%,0 100%,0 20px);
+polygon(35px 0,100% 0,100% 100%,0 100%,0 35px);
 opacity:0;
 transform:translateX(50px);
 transition:transform .4s,opacity .4s;
