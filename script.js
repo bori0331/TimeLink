@@ -531,7 +531,7 @@ async function unlinkCouple(){
 
 window.unlinkCouple = unlinkCouple; 
 
-function toggleMenu(){
+function toggleMenu() {
 
     document
         .getElementById("sideMenu")
@@ -546,7 +546,9 @@ function toggleMenu(){
         .classList.toggle("open");
 }
 
-function closeMenu(){
+window.toggleMenu = toggleMenu;
+
+function closeMenu() {
 
     document
         .getElementById("sideMenu")
