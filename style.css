@@ -215,10 +215,10 @@ main {
   z-index: 2000;
   pointer-events: none;
   clip-path: polygon(
-    0% 22%,
+    0% 10%,
     100% 0%,
     100% 100%,
-    0% 78%
+    0% 84%
 );
   /* transformは一切書かない */
 }
