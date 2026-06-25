@@ -170,6 +170,9 @@ function setPrince() {
   localStorage.setItem("theme", "prince");
 }
 
+window.setPrincess = setPrincess;
+window.setPrince = setPrince;
+
 */
 
 const savedTheme = localStorage.getItem("theme")
@@ -305,8 +308,6 @@ createCalendar()
 
 }
 
-window.setPrincess = setPrincess;
-window.setPrince = setPrince;
 window.login = login;
 window.logout = logout;
 window.addEvent = addEvent;
