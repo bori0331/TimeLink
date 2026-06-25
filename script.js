@@ -158,6 +158,8 @@ if(userSnap.exists()){
 
 let events = JSON.parse(localStorage.getItem("events")) || {}
 
+/*
+
 function setPrincess() {
   document.body.className = "princess";
   localStorage.setItem("theme", "princess");
@@ -167,6 +169,8 @@ function setPrince() {
   document.body.className = "prince";
   localStorage.setItem("theme", "prince");
 }
+
+*/
 
 const savedTheme = localStorage.getItem("theme")
 

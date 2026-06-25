@@ -148,6 +148,8 @@ opacity:1;
 transform:translateX(0);
 }
 
+/*
+
 body.prince .menu-grid{
 background:rgba(15,15,20,.8);
 backdrop-filter:blur(25px);
@@ -170,6 +172,8 @@ background:white;
 color:#ff4fa3;
 border:1px solid rgba(255,79,163,.15);
 }
+
+*/
 
 .menu-grid.open .grid-card:nth-child(1){
 transition-delay:.05s;
@@ -285,6 +289,8 @@ font-size:12px;
 margin-top:5px;
 }
 
+/*
+
 body.princess{
 background:#fff0f6;
 color:#ff4fa3;
@@ -304,6 +310,8 @@ body.prince .day{
 background:#1a1a22;
 box-shadow:0 0 10px rgba(0,255,255,0.2);
 }
+
+*/
 
 button{
 padding:12px 18px;
