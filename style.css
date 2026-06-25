@@ -13,26 +13,26 @@
   padding: 0;
 }
 
+/* 背景はhtmlに固定 → bodyは透明にしてカードだけスクロール */
 html {
   font-size: 16px;
+  min-height: 100%;
+  background-color: #eef1ff;
+  background-image:
+    radial-gradient(ellipse 70% 55% at 15% 10%,  rgba(200, 210, 255, 0.85) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 50% at 85% 5%,   rgba(220, 230, 255, 0.75) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 45% at 10% 55%,  rgba(210, 205, 255, 0.55) 0%, transparent 70%),
+    radial-gradient(ellipse 65% 50% at 90% 50%,  rgba(190, 215, 255, 0.50) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(230, 215, 255, 0.45) 0%, transparent 65%);
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 body {
   font-family: 'Noto Sans JP', sans-serif;
   min-height: 100vh;
   padding-bottom: 160px;
-  background-color: #eef1ff;
-  background-image:
-    /* 左上：薄いラベンダー光 */
-    radial-gradient(ellipse 70% 55% at 15% 10%,  rgba(200, 210, 255, 0.85) 0%, transparent 70%),
-    /* 右上：白みがかったブルー */
-    radial-gradient(ellipse 55% 50% at 85% 5%,   rgba(220, 230, 255, 0.75) 0%, transparent 65%),
-    /* 中央左：やわらかいパープル */
-    radial-gradient(ellipse 60% 45% at 10% 55%,  rgba(210, 205, 255, 0.55) 0%, transparent 70%),
-    /* 中央右：ライトブルー */
-    radial-gradient(ellipse 65% 50% at 90% 50%,  rgba(190, 215, 255, 0.50) 0%, transparent 70%),
-    /* 下部：ごく薄いピンク（アクセント） */
-    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(230, 215, 255, 0.45) 0%, transparent 65%);
+  background: transparent;
   color: #3a4a7a;
 }
 
@@ -221,8 +221,8 @@ main {
   z-index: 2000;
   overflow-y: auto;
 
-  /* 斜めカット（左端） */
-  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  /* 閉じた状態：右端に隠れてる（全部100%右） */
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
   transition:
     right 0.45s cubic-bezier(0.95, 0, 0.1, 1),
     clip-path 0.45s cubic-bezier(0.95, 0, 0.1, 1);
@@ -230,7 +230,23 @@ main {
 
 .menu-grid.open {
   right: 0;
-  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%, 0 100%);
+  /*
+    台形の形：
+    左上→斜め（上辺の左端を右にずらす）
+    右上→右上角
+    右下→右下角（少し削る）
+    左下→左下角
+    ／
+    |
+     ＼
+    のイメージ：上左が削れて、下右も少し削れる
+  */
+  clip-path: polygon(
+    20% 0%,       /* 左上：斜めカットの終点（上辺） */
+    100% 0%,      /* 右上 */
+    100% 100%,    /* 右下 */
+    0% 92%        /* 左下：下も少し削れる */
+  );
 }
 
 /* ── グリッドカード ── */

@@ -153,30 +153,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 </footer>
 
 <script type="module" src="script.js"></script>
-<script>
-  // メニュートグル（script.jsにバックエンドがある場合はそちらに移動してください）
-  function toggleMenu(e) {
-    const menu = document.getElementById('sideMenu');
-    const overlay = document.getElementById('overlay');
-    const btn = document.getElementById('menuBtn');
-    const isOpen = menu.classList.contains('open');
-    if (isOpen) {
-      closeMenu();
-    } else {
-      menu.classList.add('open');
-      overlay.classList.add('show');
-      btn.classList.add('open');
-    }
-  }
-  function closeMenu() {
-    const menu = document.getElementById('sideMenu');
-    const overlay = document.getElementById('overlay');
-    const btn = document.getElementById('menuBtn');
-    menu.classList.remove('open');
-    overlay.classList.remove('show');
-    btn.classList.remove('open');
-  }
-</script>
+<!-- toggleMenu / closeMenu は script.js で定義済み -->
 
 </body>
 </html>
