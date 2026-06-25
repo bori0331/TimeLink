@@ -23,7 +23,7 @@ body {
   padding-bottom: 160px;
   color: #3a4a7a;
   background: transparent;
-  position: relative;
+  /* position:relativeを外す → body::beforeのz-index:-1が正しくbody背後に入る */
 }
 
 /* 背景固定（iOS Safariでも動く疑似要素方式） */
@@ -210,15 +210,15 @@ main {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(320px, 82vw);
+  width: min(360px, 88vw);
   height: 100vh;
   z-index: 2000;
   pointer-events: none;
   clip-path: polygon(
-    20% 0%,
+    0% 0%,
     100% 0%,
     100% 100%,
-    0% 92%
+    0% 72%
   );
   /* transformは一切書かない */
 }
@@ -277,7 +277,7 @@ main {
 
 /* グリッドカード */
 .grid-card {
-  height: 120px;
+  height: 150px;
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -562,7 +562,7 @@ footer p {
   }
 
   .menu-grid-clip {
-    width: 88vw;
+    width: 95vw;
   }
 
   .menu-grid {
