@@ -21,8 +21,18 @@ body {
   font-family: 'Noto Sans JP', sans-serif;
   min-height: 100vh;
   padding-bottom: 160px;
-  background:
-    linear-gradient(160deg, #dce8ff 0%, #f0f4ff 40%, #e8eeff 100%);
+  background-color: #eef1ff;
+  background-image:
+    /* 左上：薄いラベンダー光 */
+    radial-gradient(ellipse 70% 55% at 15% 10%,  rgba(200, 210, 255, 0.85) 0%, transparent 70%),
+    /* 右上：白みがかったブルー */
+    radial-gradient(ellipse 55% 50% at 85% 5%,   rgba(220, 230, 255, 0.75) 0%, transparent 65%),
+    /* 中央左：やわらかいパープル */
+    radial-gradient(ellipse 60% 45% at 10% 55%,  rgba(210, 205, 255, 0.55) 0%, transparent 70%),
+    /* 中央右：ライトブルー */
+    radial-gradient(ellipse 65% 50% at 90% 50%,  rgba(190, 215, 255, 0.50) 0%, transparent 70%),
+    /* 下部：ごく薄いピンク（アクセント） */
+    radial-gradient(ellipse 80% 40% at 50% 100%, rgba(230, 215, 255, 0.45) 0%, transparent 65%);
   color: #3a4a7a;
 }
 
@@ -44,11 +54,11 @@ button:active {
 }
 
 .header-left h1 {
-  font-family: 'Quicksand', sans-serif;
-  font-size: 36px;
-  font-weight: 600;
+  font-family: 'Cormorant Garamond', 'Quicksand', serif;
+  font-size: 38px;
+  font-weight: 300;
   color: #5b7fff;
-  letter-spacing: -0.5px;
+  letter-spacing: 1px;
   line-height: 1;
 }
 
@@ -79,22 +89,29 @@ button:active {
 .menu-btn span {
   display: block;
   width: 26px;
-  height: 2.5px;
+  height: 2px;
   background: #7a94cc;
   border-radius: 10px;
   transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.25s ease;
+  transform-origin: center;
 }
 
+/* 閉じた状態：3本線 */
+.menu-btn span:nth-child(1) { transform: translateY(0); }
+.menu-btn span:nth-child(2) { transform: translateY(0); }
+.menu-btn span:nth-child(3) { transform: translateY(0); }
+
+/* 開いた状態：× に変形 */
 .menu-btn.open span:nth-child(1) {
-  transform: rotate(45deg) translateY(12px);
+  transform: translateY(8.5px) rotate(45deg);
 }
 .menu-btn.open span:nth-child(2) {
   opacity: 0;
   transform: scaleX(0);
 }
 .menu-btn.open span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-12px);
+  transform: translateY(-8.5px) rotate(-45deg);
 }
 
 /* ── メインエリア ── */
