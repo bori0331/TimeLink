@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Couple | TimeLink</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+
+</head>
+
+<body>
+
+<header class="header">
+
+<h1>Couple</h1>
+
+<button onclick="location.href='index.html'"
+class="back-btn">
+
+<span class="material-symbols-outlined">
+arrow_back
+</span>
+
+</button>
+
+</header>
+
+<div class="couple-container">
+
+<div class="couple-card" onclick="createCouple()">
+
+<span class="material-symbols-outlined">
+key
+</span>
+
+<h3>コード発行</h3>
+
+<p>カップルコードを作成</p>
+
+</div>
+
+<div class="couple-card">
+
+<span class="material-symbols-outlined">
+edit
+</span>
+
+<h3>コード入力</h3>
+
+<input
+type="text"
+id="CoupleCode"
+placeholder="例：ABC123">
+
+</div>
+
+<div class="couple-card" onclick="joinCouple()">
+
+<span class="material-symbols-outlined">
+favorite
+</span>
+
+<h3>リンク</h3>
+
+<p>相手と接続する</p>
+
+</div>
+
+<div class="couple-card" onclick="unlinkCouple()">
+
+<span class="material-symbols-outlined">
+heart_broken
+</span>
+
+<h3>解除</h3>
+
+<p>リンクを解除する</p>
+
+</div>
+
+</div>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
