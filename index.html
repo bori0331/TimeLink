@@ -9,170 +9,174 @@
 href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 <link rel="stylesheet"
 href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
 <header class="header">
-
-<h1>TimeLink</h1>
-
-<button class="menu-btn" onclick="toggleMenu(event)">
-<span></span>
-<span></span>
-<span></span>
-</button>
-
+  <div class="header-left">
+    <h1>TimeLink</h1>
+    <p class="tagline">ふたりの時間をつなぐ</p>
+  </div>
+  <button class="menu-btn" id="menuBtn" onclick="toggleMenu(event)" aria-label="メニュー">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </header>
 
 <main>
-    
+
+  <div id="userInfo">
+    <button id="loginBtn" onclick="login()">ログイン</button>
+    <div id="profile" style="display:none;">
+      <img id="userPhoto" width="50">
+      <p id="userName"></p>
+      <button onclick="logout()">ログアウト</button>
+    </div>
+  </div>
+
+  <!-- 次の予定カード -->
+  <div class="card">
+    <div class="card-label">
+      <span class="material-symbols-outlined">calendar_month</span>
+      次の予定
+    </div>
+    <div class="card-content">
+      <p class="card-title">❤️ デート</p>
+      <p class="card-sub">6月25日(水) 18:00</p>
+    </div>
+  </div>
+
+  <!-- 記念日カウントダウン -->
+  <div class="card">
+    <div class="card-label">
+      <span class="material-symbols-outlined">card_giftcard</span>
+      記念日まで
+    </div>
+    <div class="card-content">
+      <p class="card-countdown"><span class="count-num">12</span> 日</p>
+      <p class="card-sub">付き合って1年</p>
+    </div>
+  </div>
+
+  <!-- 思い出 -->
+  <div class="card">
+    <div class="card-label">
+      <span class="material-symbols-outlined">photo_library</span>
+      思い出
+    </div>
+    <div class="card-content">
+      <p class="card-link">アルバムを開く</p>
+    </div>
+  </div>
+
 </main>
 
-<div id="userInfo">
-    <button id="loginBtn" onclick="login()">
-        ログイン
-    </button>
-
-<div id="profile" style="display:none;">
-    <img id="userPhoto" width="50">
-    <p id="userName"></p>
-    <button onclick="logout()">
-        ログアウト
-    </button>
-</div>
-</div>
-
+<!-- サイドメニュー -->
 <div class="menu-grid" id="sideMenu">
 
-    <button class="close-btn" onclick="closeMenu()">
-        ✕
-    </button>
+  <button class="close-btn" onclick="closeMenu()" aria-label="閉じる">✕</button>
 
-<div class="grid-card"
-onclick="location.href='calendar.html'">
+  <div class="grid-card" onclick="location.href='#'">
+    <span class="material-symbols-outlined">crown</span>
+    <p class="grid-label-ja">テーマ</p>
+    <p class="grid-label-en">Theme</p>
+  </div>
 
-<span class="material-symbols-outlined">
-calendar_month
-</span>
+  <div class="grid-card" onclick="createCouple()">
+    <span class="material-symbols-outlined">favorite</span>
+    <p class="grid-label-ja">カップル</p>
+    <p class="grid-label-en">Couple</p>
+  </div>
 
-<p>Calendar</p>
+  <div class="grid-card" onclick="location.href='calendar.html'">
+    <span class="material-symbols-outlined">calendar_month</span>
+    <p class="grid-label-ja">カレンダー</p>
+    <p class="grid-label-en">Calendar</p>
+  </div>
 
-</div>
+  <div class="grid-card" onclick="location.href='chat.html'">
+    <span class="material-symbols-outlined">chat</span>
+    <p class="grid-label-ja">チャット</p>
+    <p class="grid-label-en">Chat</p>
+  </div>
 
-<div class="grid-card"
-onclick="location.href='chat.html'">
+  <div class="grid-card" onclick="location.href='profile.html'">
+    <span class="material-symbols-outlined">person</span>
+    <p class="grid-label-ja">プロフィール</p>
+    <p class="grid-label-en">Profile</p>
+  </div>
 
-<span class="material-symbols-outlined">
-chat
-</span>
-
-<p>Chat</p>
-
-</div>
-
-<div class="grid-card"
-onclick="location.href='profile.html'">
-
-<span class="material-symbols-outlined">
-person
-</span>
-
-<p>Profile</p>
-
-</div>
-
-<div class="grid-card"
-onclick="createCouple()">
-
-<span class="material-symbols-outlined">
-favorite
-</span>
-
-<p>Couple</p>
+  <div class="grid-card" onclick="location.href='#'">
+    <span class="material-symbols-outlined">settings</span>
+    <p class="grid-label-ja">設定</p>
+    <p class="grid-label-en">Settings</p>
+  </div>
 
 </div>
 
-<div class="grid-card"
-onclick="setPrincess()">
+<!-- オーバーレイ -->
+<div id="overlay" onclick="closeMenu()"></div>
 
-👑
-
-<p>Princess</p>
-
-</div>
-
-<div class="grid-card"
-onclick="setPrince()">
-
-🤴
-
-<p>Prince</p>
-
-</div>
-
-</div>
-
+<!-- ボトムナビ -->
 <nav class="bottom-nav">
-
-<button
-class="active" onclick="location.href='index.html'">
-<span class="material-symbols-outlined">
-home
-</span>
-</button>
-
-<button
-class="active" onclick="location.href='calendar.html'">
-<span class="material-symbols-outlined">
-calendar_month
-</span>
-</button>
-
-<button class="active">
-<span class="material-symbols-outlined">
-chat
-</span>
-</button>
-
-<button class="active">
-<span class="material-symbols-outlined">
-person
-</span>
-</button>
-
+  <button class="nav-btn active" onclick="location.href='index.html'" aria-label="ホーム">
+    <span class="material-symbols-outlined">home</span>
+    <span class="nav-label">ホーム</span>
+  </button>
+  <button class="nav-btn" onclick="location.href='calendar.html'" aria-label="カレンダー">
+    <span class="material-symbols-outlined">calendar_month</span>
+    <span class="nav-label">カレンダー</span>
+  </button>
+  <button class="nav-btn" onclick="location.href='chat.html'" aria-label="チャット">
+    <span class="material-symbols-outlined">chat</span>
+    <span class="nav-label">チャット</span>
+  </button>
+  <button class="nav-btn" onclick="location.href='profile.html'" aria-label="プロフィール">
+    <span class="material-symbols-outlined">person</span>
+    <span class="nav-label">プロフィール</span>
+  </button>
 </nav>
 
 <footer>
-    <h3>TimeLink</h3>
-    <p>Official Links</p>
-
-    <div class="social-links">
-
-        <a href="#">
-            <i class="fa-brands fa-line"></i>
-        </a>
-
-        <a href="https://www.instagram.com/?hl=ja">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
-
-        <a href="#">
-            <i class="fa-brands fa-discord"></i>
-        </a>
-
-        <a href="#">
-            <i class="fa-brands fa-github"></i>
-        </a>
-
-    </div>
-
-    <p>© TimeLink</p>
+  <h3>TimeLink</h3>
+  <p>Official Links</p>
+  <div class="social-links">
+    <a href="#" aria-label="LINE"><i class="fa-brands fa-line"></i></a>
+    <a href="https://www.instagram.com/?hl=ja" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  </div>
+  <p>© TimeLink</p>
 </footer>
 
-<div id="overlay"></div>
-
 <script type="module" src="script.js"></script>
+<script>
+  // メニュートグル（script.jsにバックエンドがある場合はそちらに移動してください）
+  function toggleMenu(e) {
+    const menu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+    const btn = document.getElementById('menuBtn');
+    const isOpen = menu.classList.contains('open');
+    if (isOpen) {
+      closeMenu();
+    } else {
+      menu.classList.add('open');
+      overlay.classList.add('show');
+      btn.classList.add('open');
+    }
+  }
+  function closeMenu() {
+    const menu = document.getElementById('sideMenu');
+    const overlay = document.getElementById('overlay');
+    const btn = document.getElementById('menuBtn');
+    menu.classList.remove('open');
+    overlay.classList.remove('show');
+    btn.classList.remove('open');
+  }
+</script>
 
 </body>
 </html>

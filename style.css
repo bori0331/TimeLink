@@ -1,470 +1,570 @@
-@media(max-width:600px){
+/* ===========================
+   TimeLink — style.css
+   =========================== */
 
-    .calendar-header button{
-        width:40px;
-        height:40px;
-    }
-
-    h1{
-        font-size:28px;
-    }
-
-    .day{
-        font-size:12px;
-        min-height:60px;
-        padding:8px 2px;
-    }
-
-    .menu button{
-        width:90%;
-    }
-
-    .add-event button{
-        width:90%;
-    }
-
-    input,select{
-        width:90%;
-    }
-
+/* ── リセット & ベース ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
-body{
-font-family:sans-serif;
-margin:0;
-padding:20px;
-padding-bottom:140px;
-text-align:center;
-transition:0.4s;
-background:
-linear-gradient(
-135deg,
-#edf2ff,
-#f7f8ff,
-#e6edff
-);
+* {
+  margin: 0;
+  padding: 0;
 }
 
-header{
-margin-top:20px;
+html {
+  font-size: 16px;
 }
 
-/*
-
-.menu{
-position:fixed;
-top:0;
-right:-300px;
-width:250px;
-height:100vh;
-padding-top:100px;
-background:rgba(0, 0, 0, 0.093);
-backdrop-filter:blur(15px);
-box-shadow:-5px 0 15px rgba(0,0,0,.1);
-transition:.3s;
-z-index:2000;
-display:flex;
-flex-direction:column;
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+  padding-bottom: 160px;
+  background:
+    linear-gradient(160deg, #dce8ff 0%, #f0f4ff 40%, #e8eeff 100%);
+  color: #3a4a7a;
 }
 
-.menu.open{
-right:0;
+button, a {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 
-.menu button{
-width:90%;
-margin:10px auto;
+button:active {
+  transform: scale(0.96);
 }
 
-*/
-
-.menu-btn{
-width:40px;
-height:40px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-gap:6px;
-background:none;
-border:none;
+/* ── ヘッダー ── */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 48px 24px 16px;
 }
 
-.menu-btn span{
-width:28px;
-height:3px;
-background:#555;
-border-radius:10px;
-transition:.3s;
+.header-left h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #5b7fff;
+  letter-spacing: -0.5px;
+  line-height: 1;
 }
 
-.menu-grid{
-position:fixed;
-top:0;
-right:-100%;
-width:min(320px,80vw);
-height:100vh;
-padding:100px 20px;
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:16px;
-background:rgba(255,255,255,.45);
-backdrop-filter:blur(25px);
--webkit-backdrop-filter:blur(25px);
-box-shadow:-20px 0 50px rgba(100,120,255,.12);
-border-left:1px solid rgba(255,255,255,.5);
-transition:right .5s cubic-bezier(0.95,0,0.1,1);
-z-index:2000;
-clip-path:polygon(30% 0,100% 0,100% 100%,0 100%);
-overflow-y:auto;
+.tagline {
+  font-size: 13px;
+  color: #8fa3d0;
+  margin-top: 4px;
+  font-weight: 300;
+  letter-spacing: 0.5px;
 }
 
-.menu-grid.open{
-opacity:0;
-pointer-events:none;
-right:0;
-box-shadow:-10px 0 30px rgba(0,0,0,.25);
+/* ── ハンバーガーボタン ── */
+.menu-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  margin-top: 4px;
+  flex-shrink: 0;
 }
 
-.grid-card{
-height:120px;
-background:rgba(255,255,255,.65);
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.6);
-box-shadow:0 8px 20px rgba(100,120,255,.12);
-border-radius:20px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-cursor:pointer;
-clip-path:
-polygon(35px 0,100% 0,100% 100%,0 100%,0 35px);
-opacity:0;
-transform:translateX(50px);
-transition:transform .4s,opacity .4s;
-border:1px solid rgba(255,255,255,.2);
+.menu-btn span {
+  display: block;
+  width: 26px;
+  height: 2.5px;
+  background: #7a94cc;
+  border-radius: 10px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.25s ease;
 }
 
-.grid-card p{
-font-size:12px;
-margin-top:6px;
+.menu-btn.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(12px);
+}
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.menu-btn.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-12px);
 }
 
-.menu-grid.open .grid-card{
-opacity:1;
-transform:translateX(0);
+/* ── メインエリア ── */
+main {
+  padding: 8px 20px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
-/*
-
-body.prince .menu-grid{
-background:rgba(15,15,20,.8);
-backdrop-filter:blur(25px);
-border-left:1px solid rgba(0,234,255,.2);
+#userInfo {
+  text-align: center;
+  margin-bottom: 16px;
 }
 
-body.prince .grid-card{
-background:#1a1a22;
-color:#00eaff;
-box-shadow:0 0 10px rgba(0,234,255,.15);
-border:1px solid rgba(0,234,255,.15);
+/* ── カード ── */
+.card {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 0 6px 24px rgba(90, 120, 220, 0.09);
+  border-radius: 20px;
+  padding: 18px 22px 20px;
+  margin-bottom: 14px;
+
+  /* 斜めカット（左下の角） */
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-body.prince .close-btn{
-color:#00eaff;
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(90, 120, 220, 0.15);
 }
 
-body.princess .grid-card{
-background:white;
-color:#ff4fa3;
-border:1px solid rgba(255,79,163,.15);
+.card-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #7b9ee0;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
-*/
-
-.menu-grid.open .grid-card:nth-child(1){
-transition-delay:.05s;
+.card-label .material-symbols-outlined {
+  font-size: 18px;
+  color: #7b9ee0;
 }
 
-.menu-grid.open .grid-card:nth-child(2){
-transition-delay:.1s;
+.card-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #3a4a7a;
+  margin-bottom: 4px;
 }
 
-.menu-grid.open .grid-card:nth-child(3){
-transition-delay:.15s;
+.card-sub {
+  font-size: 13px;
+  color: #8fa3c8;
+  font-weight: 300;
 }
 
-.menu-grid.open .grid-card:nth-child(4){
-transition-delay:.2s;
+.card-countdown {
+  font-size: 18px;
+  font-weight: 400;
+  color: #3a4a7a;
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  margin-bottom: 4px;
 }
 
-.menu-grid.open .grid-card:nth-child(5){
-transition-delay:.25s;
+.count-num {
+  font-size: 40px;
+  font-weight: 600;
+  font-family: 'Quicksand', sans-serif;
+  color: #5b7fff;
+  line-height: 1;
 }
 
-.menu-grid.open .grid-card:nth-child(6){
-transition-delay:.3s;
+.card-link {
+  font-size: 14px;
+  color: #7b9ee0;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
 }
 
+/* ── サイドメニュー（グリッド） ── */
+.menu-grid {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(320px, 82vw);
+  height: 100vh;
+  padding: 90px 20px 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  align-content: start;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: -20px 0 60px rgba(90, 120, 220, 0.14);
+  z-index: 2000;
+  overflow-y: auto;
 
-.menu-btn.open span:nth-child(1){
-transform:
-rotate(45deg)
-translateY(13px);
+  /* 斜めカット（左端） */
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
+  transition:
+    right 0.45s cubic-bezier(0.95, 0, 0.1, 1),
+    clip-path 0.45s cubic-bezier(0.95, 0, 0.1, 1);
 }
 
-.menu-btn.open span:nth-child(2){
-opacity:0;
+.menu-grid.open {
+  right: 0;
+  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%, 0 100%);
 }
 
-.menu-btn.open span:nth-child(3){
-transform:
-rotate(-45deg)
-translateY(-13px);
+/* ── グリッドカード ── */
+.grid-card {
+  height: 120px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(90, 120, 220, 0.10);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  gap: 4px;
+
+  /* 左上の角を斜めカット */
+  clip-path: polygon(28px 0, 100% 0, 100% 100%, 0 100%, 0 28px);
+
+  opacity: 0;
+  transform: translateX(40px);
+  transition:
+    transform 0.38s ease,
+    opacity 0.38s ease,
+    box-shadow 0.2s ease;
 }
 
-
-.grid-card:hover{
-transform:translateX(0) translateY(-5px);
+.menu-grid.open .grid-card {
+  opacity: 1;
+  transform: translateX(0);
 }
 
-.grid-card:active{
-transform:translateX(0) scale(.97);
+/* カードの入場遅延 */
+.menu-grid.open .grid-card:nth-child(2) { transition-delay: 0.04s; }
+.menu-grid.open .grid-card:nth-child(3) { transition-delay: 0.08s; }
+.menu-grid.open .grid-card:nth-child(4) { transition-delay: 0.12s; }
+.menu-grid.open .grid-card:nth-child(5) { transition-delay: 0.16s; }
+.menu-grid.open .grid-card:nth-child(6) { transition-delay: 0.20s; }
+.menu-grid.open .grid-card:nth-child(7) { transition-delay: 0.24s; }
+
+.grid-card:hover {
+  transform: translateX(0) translateY(-4px);
+  box-shadow: 0 8px 24px rgba(90, 120, 220, 0.16);
 }
 
-.grid-card .material-symbols-outlined{
-font-size:48px;
-margin-bottom:10px;
+.grid-card:active {
+  transform: translateX(0) scale(0.96);
 }
 
-.close-btn{
-position:absolute;
-top:30px;
-right:30px;
-font-size:32px;
-background:none;
-border:none;
-color:inherit;
+.grid-card .material-symbols-outlined {
+  font-size: 36px;
+  color: #6888d8;
+  margin-bottom: 2px;
 }
 
-#calendar{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-gap:5px;
-max-width:100%;
-margin:20px auto;
+.grid-label-ja {
+  font-size: 13px;
+  font-weight: 500;
+  color: #3a4a7a;
+  line-height: 1.2;
 }
 
-.calendar-wrapper{
-width:100%;
-max-width:100%;
-margin:auto;
+.grid-label-en {
+  font-size: 10px;
+  color: #9db2d8;
+  font-weight: 300;
+  letter-spacing: 0.3px;
 }
 
-.calendar-header{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-margin:20px 0;
+/* ── 閉じるボタン ── */
+.close-btn {
+  position: absolute;
+  top: 28px;
+  right: 24px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #7a94cc;
+  cursor: pointer;
+  padding: 6px;
+  line-height: 1;
+  z-index: 10;
 }
 
-.calendar-header h2{
-margin:0;
-min-width:120px;
+/* ── オーバーレイ ── */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(200, 215, 255, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1500;
 }
 
-.calendar-header button{
-width:40px;
-height:40px;
-padding:0;
-margin:0;
-font-size:18px;
-flex-shrink:0;
+#overlay.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.day{
-padding:10px 5px;
-border-radius:10px;
-font-size:14px;
-min-height:70px;
-box-sizing:border-box;
+/* ── ボトムナビ ── */
+.bottom-nav {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(380px, 88vw);
+  height: 72px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 40px;
+  box-shadow: 0 4px 24px rgba(90, 120, 220, 0.13);
+  z-index: 1000;
+  padding: 0 8px;
 }
 
-.event{
-font-size:12px;
-margin-top:5px;
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 16px;
+  color: #b0c0e0;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-/*
-
-body.princess{
-background:#fff0f6;
-color:#ff4fa3;
+.nav-btn.active,
+.nav-btn:hover {
+  color: #6888d8;
 }
 
-body.princess .day{
-background:white;
-box-shadow:0 0 10px rgba(255,100,150,0.2);
+.nav-btn .material-symbols-outlined {
+  font-size: 28px;
 }
 
-body.prince{
-background:#0f0f14;
-color:#00eaff;
+.nav-label {
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
 }
 
-body.prince .day{
-background:#1a1a22;
-box-shadow:0 0 10px rgba(0,255,255,0.2);
+/* ── フッター ── */
+footer {
+  margin-top: 60px;
+  padding: 40px 20px 20px;
+  text-align: center;
+  color: #8fa3c8;
 }
 
-*/
-
-button{
-padding:12px 18px;
-margin:5px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-size:16px;
-user-select:none;
+footer h3 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  color: #6888d8;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
 
-input,select{
-padding:8px;
-margin:5px;
+footer p {
+  font-size: 13px;
+  color: #a0b5d8;
 }
 
-.weekdays{
-display:grid;
-grid-template-columns:repeat(7,1fr);
-text-align:center;
-font-weight:bold;
-margin-top:20px;
+.social-links {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  border-radius: 30px;
+  padding: 14px 24px;
+  width: fit-content;
+  margin: 16px auto;
+  box-shadow: 0 4px 16px rgba(90, 120, 220, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.6);
 }
 
-.weekdays div{
-padding:10px 5px;
-box-sizing:border-box;
+.social-links a {
+  font-size: 28px;
+  text-decoration: none;
+  color: #8fa3c8;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.today{
-border:3px solid #ff4fa3;
-box-shadow:0 0 15px rgba(255,79,163,.4);
-border-radius:15px;
-font-weight:bold;
+.social-links a:hover {
+  color: #6888d8;
+  transform: scale(1.2);
 }
 
-.bottom-nav{
-position:fixed;
-bottom:20px;
-left:50%;
-transform:translateX(-50%);
-width:80%;
-height:70px;
-display:flex;
-justify-content:space-around;
-align-items:center;
-background:#d9d9d9;
-border-radius:40px;
-box-shadow:0 4px 15px rgba(0,0,0,.15);
-z-index:1000;
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.6);
-backdrop-filter:blur(10px);
+/* ── ログインボタン ── */
+#loginBtn {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #7a9fff, #5b7fff);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(90, 120, 255, 0.3);
+  margin-bottom: 12px;
 }
 
-.bottom-nav button{
-background:none;
-border:none;
-font-size:32px;
-padding:0;
-margin:0;
-cursor:pointer;
+/* ── カレンダー（calendar.html用） ── */
+.calendar-wrapper {
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.bottom-nav .material-symbols-outlined{
-font-size: 36px;
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
 }
 
-.bottom-nav button{
-color:#777;
+.calendar-header h2 {
+  margin: 0;
+  min-width: 120px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
 }
 
-.bottom-nav button.active{
-color:#ff69b4;
+.calendar-header button {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  color: #6888d8;
 }
 
-footer{
-margin-top:80px;
-padding:40px 20px;
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8fa3c8;
+  margin-bottom: 8px;
 }
 
-.social-links{
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(10px);
-display:flex;
-justify-content:center;
-gap:30px;
-border-radius:30px;
-padding:15px;
-width:fit-content;
-margin:20px auto;
-box-shadow:0 4px 15px rgba(0,0,0,.15)
+.weekdays div {
+  padding: 8px 2px;
 }
 
-.social-links a{
-font-size:32px;
-text-decoration:none;
-color:inherit;
-transition:.3s;
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
 }
 
-.social-links a:hover{
-transform:scale(1.2);
+.day {
+  padding: 8px 4px;
+  border-radius: 12px;
+  font-size: 13px;
+  min-height: 64px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:0 20px;
+.today {
+  border: 2px solid #ff7eb3;
+  box-shadow: 0 0 12px rgba(255, 110, 170, 0.25);
+  font-weight: 600;
 }
 
-#overlay{
-position:fixed;
-inset:0;
-background:rgba(255,255,255,.15);
-
-backdrop-filter:
-blur(8px);
--webkit-backdrop-filter:blur(8px);
-opacity:0;
-pointer-events:none;
-transition:.4s;
-z-index:1500;
+.event {
+  font-size: 10px;
+  margin-top: 4px;
+  color: #6888d8;
 }
 
-#overlay.show{
-opacity:1;
-pointer-events:auto;
+/* ── レスポンシブ ── */
+@media (max-width: 600px) {
+  .header {
+    padding: 40px 18px 12px;
+  }
+
+  .header-left h1 {
+    font-size: 30px;
+  }
+
+  main {
+    padding: 6px 16px;
+  }
+
+  .menu-grid {
+    width: 88vw;
+    padding: 80px 16px 40px;
+    gap: 12px;
+  }
+
+  .grid-card {
+    height: 108px;
+  }
+
+  .card {
+    padding: 16px 18px 18px;
+  }
+
+  .bottom-nav {
+    width: 92vw;
+    height: 66px;
+    bottom: 14px;
+  }
+
+  .nav-btn {
+    padding: 6px 10px;
+  }
+
+  .nav-btn .material-symbols-outlined {
+    font-size: 26px;
+  }
+
+  .calendar-header button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .day {
+    font-size: 11px;
+    min-height: 52px;
+    padding: 6px 2px;
+  }
 }
 
-
-
-
-
-*{
--webkit-tap-highlight-color: transparent;
-}
-
-button,
-a{
--webkit-tap-highlight-color: transparent;
-outline:none;
-}
-
-button:active{
-transform:scale(.96);
+/* ── アクセシビリティ ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
