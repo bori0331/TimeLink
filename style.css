@@ -250,7 +250,8 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   align-content: start;
-  background: rgba(255, 255, 255, 0.6);
+  background:linear-gradient(
+    180deg,rgba(255,255,255,.65),rgba(255,255,255,.45));
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border-left: 1px solid rgba(255, 255, 255, 0.6);
@@ -344,9 +345,9 @@ main {
 #overlay {
   position: fixed;
   inset: 0;
-  background: rgba(200, 215, 255, 0.2);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
@@ -562,7 +563,7 @@ footer p {
   }
 
   .menu-grid-clip {
-    width: 95vw;
+    width: min(280px,68vw);
   }
 
   .menu-grid {
