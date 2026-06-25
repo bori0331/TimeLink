@@ -282,18 +282,18 @@ main {
     box-shadow 0.2s ease;
 }
 
-.menu-grid.open .grid-card {
+.menu-grid-outer.open .grid-card {
   opacity: 1;
   transform: translateX(0);
 }
 
 /* カードの入場遅延 */
-.menu-grid.open .grid-card:nth-child(2) { transition-delay: 0.04s; }
-.menu-grid.open .grid-card:nth-child(3) { transition-delay: 0.08s; }
-.menu-grid.open .grid-card:nth-child(4) { transition-delay: 0.12s; }
-.menu-grid.open .grid-card:nth-child(5) { transition-delay: 0.16s; }
-.menu-grid.open .grid-card:nth-child(6) { transition-delay: 0.20s; }
-.menu-grid.open .grid-card:nth-child(7) { transition-delay: 0.24s; }
+.menu-grid-outer.open .grid-card:nth-child(2) { transition-delay: 0.04s; }
+.menu-grid-outer.open .grid-card:nth-child(3) { transition-delay: 0.08s; }
+.menu-grid-outer.open .grid-card:nth-child(4) { transition-delay: 0.12s; }
+.menu-grid-outer.open .grid-card:nth-child(5) { transition-delay: 0.16s; }
+.menu-grid-outer.open .grid-card:nth-child(6) { transition-delay: 0.20s; }
+.menu-grid-outer.open .grid-card:nth-child(7) { transition-delay: 0.24s; }
 
 .grid-card:hover {
   transform: translateX(0) translateY(-4px);
@@ -326,17 +326,22 @@ main {
 
 /* ── 閉じるボタン ── */
 .close-btn {
-  position: absolute;
-  top: 28px;
-  right: 24px;
+  position: sticky;
+  top: 0;
+  left: 100%;
+  margin-left: auto;
+  display: block;
+  grid-column: 1 / -1;
   font-size: 24px;
   background: none;
   border: none;
   color: #7a94cc;
   cursor: pointer;
-  padding: 6px;
+  padding: 6px 6px 6px 0;
   line-height: 1;
   z-index: 10;
+  text-align: right;
+  margin-bottom: -10px;
 }
 
 /* ── オーバーレイ ── */
@@ -560,8 +565,11 @@ footer p {
     padding: 6px 16px;
   }
 
-  .menu-grid {
+  .menu-grid-outer {
     width: 88vw;
+  }
+
+  .menu-grid {
     padding: 80px 16px 40px;
     gap: 12px;
   }
