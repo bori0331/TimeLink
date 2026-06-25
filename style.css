@@ -101,7 +101,7 @@ transition:.3s;
 position:fixed;
 top:0;
 right:-100%;
-width:min(260px,65vw);
+width:min(320px,80vw);
 height:100vh;
 padding:100px 20px;
 display:grid;
@@ -141,6 +141,11 @@ opacity:0;
 transform:translateX(50px);
 transition:transform .4s,opacity .4s;
 border:1px solid rgba(255,255,255,.2);
+}
+
+.grid-card p{
+font-size:12px;
+margin-top:6px;
 }
 
 .menu-grid.open .grid-card{
@@ -363,6 +368,8 @@ border-radius:40px;
 box-shadow:0 4px 15px rgba(0,0,0,.15);
 z-index:1000;
 background:rgba(255,255,255,.7);
+backdrop-filter:blur(20px);
+border:1px solid rgba(255,255,255,.6);
 backdrop-filter:blur(10px);
 }
 
