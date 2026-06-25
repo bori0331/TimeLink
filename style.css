@@ -13,10 +13,25 @@
   padding: 0;
 }
 
-/* 背景はhtmlに固定 → bodyは透明にしてカードだけスクロール */
 html {
   font-size: 16px;
-  min-height: 100%;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  min-height: 100vh;
+  padding-bottom: 160px;
+  color: #3a4a7a;
+  background: transparent;
+  position: relative;
+}
+
+/* 背景をposition:fixedの疑似要素で固定（iOS Safariでも動く） */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
   background-color: #eef1ff;
   background-image:
     radial-gradient(ellipse 70% 55% at 15% 10%,  rgba(200, 210, 255, 0.85) 0%, transparent 70%),
@@ -24,16 +39,6 @@ html {
     radial-gradient(ellipse 60% 45% at 10% 55%,  rgba(210, 205, 255, 0.55) 0%, transparent 70%),
     radial-gradient(ellipse 65% 50% at 90% 50%,  rgba(190, 215, 255, 0.50) 0%, transparent 70%),
     radial-gradient(ellipse 80% 40% at 50% 100%, rgba(230, 215, 255, 0.45) 0%, transparent 65%);
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
-
-body {
-  font-family: 'Noto Sans JP', sans-serif;
-  min-height: 100vh;
-  padding-bottom: 160px;
-  background: transparent;
-  color: #3a4a7a;
 }
 
 button, a {
@@ -202,12 +207,41 @@ main {
 }
 
 /* ── サイドメニュー（グリッド） ── */
-.menu-grid {
+/* ── サイドメニュー外枠（台形clip-path用） ── */
+.menu-grid-outer {
   position: fixed;
   top: 0;
   right: -100%;
   width: min(320px, 82vw);
   height: 100vh;
+  z-index: 2000;
+  pointer-events: none;
+
+  /* 閉じた状態：右端に完全に隠す */
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+  transition:
+    right 0.45s cubic-bezier(0.95, 0, 0.1, 1),
+    clip-path 0.45s cubic-bezier(0.95, 0, 0.1, 1);
+}
+
+.menu-grid-outer.open {
+  right: 0;
+  pointer-events: auto;
+  /* 台形：左上斜め、右下も少し削れる */
+  clip-path: polygon(
+    20% 0%,
+    100% 0%,
+    100% 100%,
+    0% 92%
+  );
+}
+
+.menu-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   padding: 90px 20px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -218,35 +252,7 @@ main {
   -webkit-backdrop-filter: blur(28px);
   border-left: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: -20px 0 60px rgba(90, 120, 220, 0.14);
-  z-index: 2000;
   overflow-y: auto;
-
-  /* 閉じた状態：右端に隠れてる（全部100%右） */
-  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-  transition:
-    right 0.45s cubic-bezier(0.95, 0, 0.1, 1),
-    clip-path 0.45s cubic-bezier(0.95, 0, 0.1, 1);
-}
-
-.menu-grid.open {
-  right: 0;
-  /*
-    台形の形：
-    左上→斜め（上辺の左端を右にずらす）
-    右上→右上角
-    右下→右下角（少し削る）
-    左下→左下角
-    ／
-    |
-     ＼
-    のイメージ：上左が削れて、下右も少し削れる
-  */
-  clip-path: polygon(
-    20% 0%,       /* 左上：斜めカットの終点（上辺） */
-    100% 0%,      /* 右上 */
-    100% 100%,    /* 右下 */
-    0% 92%        /* 左下：下も少し削れる */
-  );
 }
 
 /* ── グリッドカード ── */

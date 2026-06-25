@@ -545,6 +545,10 @@ function toggleMenu(event) {
     document
         .getElementById("sideMenu")
         .classList.toggle("open");
+    
+    document
+        .getElementById("sideMenuOuter")
+        .classList.toggle("open");
 
     document
         .getElementById("overlay")
@@ -562,6 +566,10 @@ function closeMenu() {
     document
         .getElementById("sideMenu")
         .classList.remove("open");
+
+    document
+        .getElementById("sideMenuOuter")
+        .classList.remove("open"); 
 
     document
         .getElementById("overlay")
