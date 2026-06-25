@@ -220,6 +220,8 @@ main {
     100% 100%,
     0% 84%
 );
+  border-radius: 24px;
+  overflow: hidden;
   /* transformは一切書かない */
 }
 
