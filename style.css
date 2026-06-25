@@ -277,7 +277,7 @@ main {
 
 /* グリッドカード */
 .grid-card {
-  height: 150px;
+  height: 200px;
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -364,7 +364,7 @@ main {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(380px, 88vw);
+  width: min(380px, 76vw);
   height: 72px;
   display: flex;
   justify-content: space-around;
