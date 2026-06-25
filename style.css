@@ -26,7 +26,7 @@ body {
   position: relative;
 }
 
-/* 背景をposition:fixedの疑似要素で固定（iOS Safariでも動く） */
+/* 背景固定（iOS Safariでも動く疑似要素方式） */
 body::before {
   content: '';
   position: fixed;
@@ -102,12 +102,6 @@ button:active {
   transform-origin: center;
 }
 
-/* 閉じた状態：3本線 */
-.menu-btn span:nth-child(1) { transform: translateY(0); }
-.menu-btn span:nth-child(2) { transform: translateY(0); }
-.menu-btn span:nth-child(3) { transform: translateY(0); }
-
-/* 開いた状態：× に変形 */
 .menu-btn.open span:nth-child(1) {
   transform: translateY(8.5px) rotate(45deg);
 }
@@ -141,8 +135,6 @@ main {
   border-radius: 20px;
   padding: 18px 22px 20px;
   margin-bottom: 14px;
-
-  /* 斜めカット（左下の角） */
   clip-path: polygon(0 0, 100% 0, 100% 100%, 30px 100%, 0 calc(100% - 30px));
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -206,48 +198,54 @@ main {
   cursor: pointer;
 }
 
-/* ── サイドメニュー（グリッド） ── */
-/* ── サイドメニュー外枠（台形clip-path用） ── */
+/* ═══════════════════════════════
+   サイドメニュー
+   構造：
+     .menu-grid-outer  ← clip-path台形・fixed配置
+       .menu-grid      ← 背景・スクロール・グリッドレイアウト
+         .close-btn
+         .grid-card × 6
+   ═══════════════════════════════ */
+
+/* 外枠：台形の形を担当 */
 .menu-grid-outer {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
   width: min(320px, 82vw);
   height: 100vh;
   z-index: 2000;
   pointer-events: none;
 
-  /* 閉じた状態：右端に完全に隠す */
-  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
-  transition:
-    right 0.45s cubic-bezier(0.95, 0, 0.1, 1),
-    clip-path 0.45s cubic-bezier(0.95, 0, 0.1, 1);
-}
-
-.menu-grid-outer.open {
-  right: 0;
-  pointer-events: auto;
-  /* 台形：左上斜め、右下も少し削れる */
+  /* 台形の形 */
   clip-path: polygon(
     20% 0%,
     100% 0%,
     100% 100%,
     0% 92%
   );
+
+  /* 閉じた状態：右へ完全に退避 */
+  transform: translateX(100%);
+  transition: transform 0.45s cubic-bezier(0.95, 0, 0.1, 1);
 }
 
+.menu-grid-outer.open {
+  transform: translateX(0%);
+  pointer-events: auto;
+}
+
+/* 内枠：背景・スクロール・グリッド */
 .menu-grid {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 90px 20px 40px;
+  inset: 0;
+  padding: 0 20px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
   gap: 14px;
   align-content: start;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border-left: 1px solid rgba(255, 255, 255, 0.6);
@@ -255,7 +253,24 @@ main {
   overflow-y: auto;
 }
 
-/* ── グリッドカード ── */
+/* 閉じるボタン：グリッド全幅を占有 */
+.close-btn {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 28px 4px 16px;
+  font-size: 26px;
+  background: rgba(255,255,255,0.01);
+  border: none;
+  color: #7a94cc;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* グリッドカード */
 .grid-card {
   height: 120px;
   background: rgba(255, 255, 255, 0.78);
@@ -270,38 +285,37 @@ main {
   align-items: center;
   cursor: pointer;
   gap: 4px;
-
-  /* 左上の角を斜めカット */
   clip-path: polygon(28px 0, 100% 0, 100% 100%, 0 100%, 0 28px);
 
   opacity: 0;
-  transform: translateX(40px);
+  transform: translateX(30px);
   transition:
     transform 0.38s ease,
     opacity 0.38s ease,
     box-shadow 0.2s ease;
 }
 
+/* 開いたときカードを表示 */
 .menu-grid-outer.open .grid-card {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* カードの入場遅延 */
-.menu-grid-outer.open .grid-card:nth-child(2) { transition-delay: 0.04s; }
-.menu-grid-outer.open .grid-card:nth-child(3) { transition-delay: 0.08s; }
-.menu-grid-outer.open .grid-card:nth-child(4) { transition-delay: 0.12s; }
-.menu-grid-outer.open .grid-card:nth-child(5) { transition-delay: 0.16s; }
-.menu-grid-outer.open .grid-card:nth-child(6) { transition-delay: 0.20s; }
-.menu-grid-outer.open .grid-card:nth-child(7) { transition-delay: 0.24s; }
+/* カードの入場遅延（close-btnがnth-child(1)なのでカードは2〜7） */
+.menu-grid-outer.open .grid-card:nth-child(2) { transition-delay: 0.05s; }
+.menu-grid-outer.open .grid-card:nth-child(3) { transition-delay: 0.10s; }
+.menu-grid-outer.open .grid-card:nth-child(4) { transition-delay: 0.15s; }
+.menu-grid-outer.open .grid-card:nth-child(5) { transition-delay: 0.20s; }
+.menu-grid-outer.open .grid-card:nth-child(6) { transition-delay: 0.25s; }
+.menu-grid-outer.open .grid-card:nth-child(7) { transition-delay: 0.30s; }
 
 .grid-card:hover {
-  transform: translateX(0) translateY(-4px);
+  transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(90, 120, 220, 0.16);
 }
 
 .grid-card:active {
-  transform: translateX(0) scale(0.96);
+  transform: scale(0.96);
 }
 
 .grid-card .material-symbols-outlined {
@@ -322,26 +336,6 @@ main {
   color: #9db2d8;
   font-weight: 300;
   letter-spacing: 0.3px;
-}
-
-/* ── 閉じるボタン ── */
-.close-btn {
-  position: sticky;
-  top: 0;
-  left: 100%;
-  margin-left: auto;
-  display: block;
-  grid-column: 1 / -1;
-  font-size: 24px;
-  background: none;
-  border: none;
-  color: #7a94cc;
-  cursor: pointer;
-  padding: 6px 6px 6px 0;
-  line-height: 1;
-  z-index: 10;
-  text-align: right;
-  margin-bottom: -10px;
 }
 
 /* ── オーバーレイ ── */
@@ -394,7 +388,7 @@ main {
   padding: 8px 14px;
   border-radius: 16px;
   color: #b0c0e0;
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .nav-btn.active,
@@ -570,7 +564,7 @@ footer p {
   }
 
   .menu-grid {
-    padding: 80px 16px 40px;
+    padding: 0 16px 40px;
     gap: 12px;
   }
 
