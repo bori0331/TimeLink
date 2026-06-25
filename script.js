@@ -536,7 +536,11 @@ async function unlinkCouple(){
 
 window.unlinkCouple = unlinkCouple; 
 
-function toggleMenu() {
+function toggleMenu(event) {
+
+    if(event){
+        event.stopPropagation();
+    }
 
     document
         .getElementById("sideMenu")
