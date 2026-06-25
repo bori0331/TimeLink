@@ -616,35 +616,33 @@ footer p {
 /* couple.html */
 
 .couple-container{
-max-width:700px;
-margin:40px auto;
 display:grid;
 grid-template-columns:repeat(2,1fr);
 gap:20px;
+
+max-width:700px;
+margin:40px auto;
+padding:20px;
 }
 
 .couple-card{
-background:rgba(255,255,255,.65);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.6);
+background:rgba(255,255,255,.7);
+backdrop-filter:blur(15px);
 
 border-radius:25px;
-
 padding:30px 20px;
+
+box-shadow:0 8px 25px rgba(100,120,255,.12);
 
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 
-min-height:180px;
+text-align:center;
 
 cursor:pointer;
-
 transition:.3s;
-
-box-shadow:
-0 10px 30px rgba(100,120,255,.1);
 }
 
 .couple-card:hover{
@@ -652,28 +650,22 @@ transform:translateY(-5px);
 }
 
 .couple-card .material-symbols-outlined{
-font-size:56px;
-margin-bottom:15px;
-color:#6a7cff;
-}
-
-.couple-card h3{
-margin:10px 0;
+font-size:48px;
+margin-bottom:10px;
 }
 
 .couple-card input{
 width:90%;
-padding:12px;
+padding:10px;
 border:none;
 border-radius:12px;
-text-align:center;
-font-size:16px;
+margin-top:10px;
 }
 
 .back-btn{
 background:none;
 border:none;
-font-size:32px;
+font-size:30px;
 cursor:pointer;
 }
 
@@ -681,7 +673,12 @@ cursor:pointer;
 
 .couple-container{
 grid-template-columns:1fr;
-padding:0 10px;
+padding:15px;
+gap:15px;
+}
+
+.couple-card{
+padding:25px 15px;
 }
 
 }
