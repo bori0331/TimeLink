@@ -537,47 +537,21 @@ async function unlinkCouple(){
 window.unlinkCouple = unlinkCouple; 
 
 function toggleMenu(event) {
-
-    if(event){
-        event.stopPropagation();
-    }
-
-    document
-        .getElementById("sideMenu")
-        .classList.toggle("open");
-    
-    document
-        .getElementById("sideMenuOuter")
-        .classList.toggle("open");
-
-    document
-        .getElementById("overlay")
-        .classList.toggle("show");
-
-    document
-        .querySelector(".menu-btn")
-        .classList.toggle("open");
+    if(event){ event.stopPropagation(); }
+    document.getElementById("sideMenuClip").classList.toggle("open");
+    document.getElementById("sideMenuOuter").classList.toggle("open");
+    document.getElementById("overlay").classList.toggle("show");
+    document.querySelector(".menu-btn").classList.toggle("open");
 }
+
 
 window.toggleMenu = toggleMenu;
 
 function closeMenu() {
-
-    document
-        .getElementById("sideMenu")
-        .classList.remove("open");
-
-    document
-        .getElementById("sideMenuOuter")
-        .classList.remove("open"); 
-
-    document
-        .getElementById("overlay")
-        .classList.remove("show");
-
-    document
-        .querySelector(".menu-btn")
-        .classList.remove("open");
+    document.getElementById("sideMenuClip").classList.remove("open");
+    document.getElementById("sideMenuOuter").classList.remove("open");
+    document.getElementById("overlay").classList.remove("show");
+    document.querySelector(".menu-btn").classList.remove("open");
 }
 
 window.closeMenu = closeMenu;
