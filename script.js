@@ -390,43 +390,26 @@ createCalendar()
 window.prevMonth = prevMonth;
 window.nextMonth = nextMonth;
 
-async function deleteEvent(key){
+async function deleteEvent(key,index){
 
-if(confirm("予定を削除しますか？")){
+    if(!confirm("削除しますか？")) return;
 
-delete events[key]
+    events[key].splice(index,1);
 
-localStorage.setItem(
-"events",
-JSON.stringify(events)
-)
+    if(events[key].length===0){
+        delete events[key];
+    }
 
-const user = auth.currentUser;
+    localStorage.setItem(
+        "events",
+        JSON.stringify(events)
+    );
 
-if(user){
+    console.log("Firestore削除保存成功");
 
-  const userSnap = await getDoc(
-    doc(db,"users",user.uid)
-  );
+    createCalendar();
 
-  const coupleId =
-  userSnap.data().coupleId;
-
-  await setDoc(
-    doc(db,"couples",coupleId),
-    {
-      events: events
-    },
-    { merge: true }
-  );
-
-  console.log("Firestore削除保存成功");
-
-}
-
-createCalendar()
-
-}
+    closeModal();
 
 }
 
@@ -592,3 +575,66 @@ function closeMenu() {
 }
 
 window.closeMenu = closeMenu;
+
+function openDay(key){
+
+    const list = events[key] || [];
+
+    const modal = document.getElementById("dayModal");
+    const title = document.getElementById("modalDate");
+    const body = document.getElementById("modalBody");
+
+    title.textContent = key;
+
+    if(list.length === 0){
+
+        body.innerHTML = `
+        <p>予定はありません</p>
+        <button onclick="showAddForm('${key}')">
+            ＋追加
+        </button>
+        `;
+
+    }else{
+
+        body.innerHTML = list.map((event,index)=>`
+
+        <div class="schedule-card">
+
+            <div class="schedule-head">
+                ${event.icon}
+                ${event.text}
+            </div>
+
+            <div>👤 ${event.owner}</div>
+
+            <div>🕒 ${event.time}</div>
+
+            <div>📍 ${event.place}</div>
+
+            <div>📝 ${event.memo}</div>
+
+            <button onclick="deleteEvent('${key}',${index})">
+                削除
+            </button>
+
+        </div>
+
+        `).join("");
+
+    }
+
+    modal.classList.add("show");
+}
+
+window.openDay = openDay;
+
+function closeModal(){
+
+    document
+    .getElementById("dayModal")
+    .classList.remove("show");
+
+}
+
+window.closeModal = closeModal;
