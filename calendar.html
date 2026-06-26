@@ -65,6 +65,54 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 </div>
 
+<!-- サイドメニュー（3層：clip / slide / scroll） -->
+<div class="menu-grid-clip" id="sideMenuClip">
+<div class="menu-grid-outer" id="sideMenuOuter">
+<div class="menu-grid" id="sideMenu">
+
+  <button class="close-btn" onclick="closeMenu()" aria-label="閉じる">✕</button>
+
+  <div class="grid-card" onclick="location.href='#'">
+    <span class="material-symbols-outlined">crown</span>
+    <p class="grid-label-ja">テーマ</p>
+    <p class="grid-label-en">Theme</p>
+  </div>
+
+  <div class="grid-card" 
+    onclick="location.href='couple.html'">
+    <span class="material-symbols-outlined">favorite</span>
+    <p class="grid-label-ja">カップル</p>
+    <p class="grid-label-en">Couple</p>
+  </div>
+
+  <div class="grid-card" onclick="location.href='calendar.html'">
+    <span class="material-symbols-outlined">calendar_month</span>
+    <p class="grid-label-ja">カレンダー</p>
+    <p class="grid-label-en">Calendar</p>
+  </div>
+
+  <div class="grid-card" onclick="location.href='chat.html'">
+    <span class="material-symbols-outlined">chat</span>
+    <p class="grid-label-ja">チャット</p>
+    <p class="grid-label-en">Chat</p>
+  </div>
+
+  <div class="grid-card" onclick="location.href='profile.html'">
+    <span class="material-symbols-outlined">person</span>
+    <p class="grid-label-ja">プロフィール</p>
+    <p class="grid-label-en">Profile</p>
+  </div>
+
+  <div class="grid-card" onclick="location.href='#'">
+    <span class="material-symbols-outlined">settings</span>
+    <p class="grid-label-ja">設定</p>
+    <p class="grid-label-en">Settings</p>
+  </div>
+
+</div>
+</div>
+</div>
+
 <!-- オーバーレイ -->
 <div id="overlay" onclick="closeMenu()"></div>
 
