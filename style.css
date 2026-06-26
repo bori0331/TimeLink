@@ -628,6 +628,89 @@ footer p {
   }
 }
 
+/* calendar.html */
+
+/* ======================
+   Add Event Glass Table
+====================== */
+
+.add-event{
+max-width:700px;
+margin:45px auto 80px;
+padding:35px;
+background:rgba(255,255,255,.55);
+backdrop-filter:blur(22px);
+-webkit-backdrop-filter:blur(22px);
+border:1px solid rgba(255,255,255,.7);
+border-radius:34px;
+box-shadow:0 10px 35px rgba(110,130,255,.12);
+display:flex;
+flex-direction:column;
+gap:18px;
+position:relative;
+overflow:hidden;
+}
+
+.add-event::before{
+content:"";
+position:absolute;
+top:-40%;
+left:-25%;
+width:160%;
+height:70%;
+background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);
+transform:rotate(-10deg);
+pointer-events:none;
+}
+
+.add-event h3{
+font-family:'Cormorant Garamond',serif;
+font-size:34px;
+font-weight:300;
+color:#5b7fff;
+text-align:center;
+margin-bottom:10px;
+letter-spacing:1px;
+}
+
+.add-event input, .add-event select{
+width:100%;
+padding:16px 18px;
+border-radius:16px;
+border:1px solid rgba(255,255,255,.8);
+background:rgba(255,255,255,.45);
+backdrop-filter:blur(10px);
+font-size:15px;
+color:#4b5f93;
+outline:none;
+transition:.25s;
+}
+
+.add-event input:focus, .add-event select:focus{
+border-color:#7a9fff;
+box-shadow:0 0 20px rgba(122,159,255,.18);
+background:rgba(255,255,255,.65);
+}
+
+.add-event button{
+margin-top:10px;
+padding:15px;
+border:none;
+border-radius:18px;
+background:linear-gradient(135deg,#7fa6ff,#6b8cff);
+color:white;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 10px 25px rgba(90,120,255,.25);
+transition:.25s;
+}
+
+.add-event button:hover{
+transform:translateY(-2px);
+box-shadow:0 14px 30px rgba(90,120,255,.35);
+}
+
 /* couple.html */
 
 .couple-container{
@@ -694,6 +777,21 @@ gap:15px;
 
 .couple-card{
 padding:25px 15px;
+}
+
+.add-event{
+margin:30px 15px 70px;
+padding:25px;
+border-radius:26px;
+}
+
+.add-event h3{
+font-size:28px;
+}
+
+.add-event input, .add-event select{
+padding:14px;
+font-size:14px;
 }
 
 }
