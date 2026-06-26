@@ -460,7 +460,7 @@ footer p {
 }
 
 /* ── ログインボタン ── */
-#loginBtn {
+#loginBtn #logoutBtn {
   padding: 10px 24px;
   background: linear-gradient(135deg, #7a9fff, #5b7fff);
   color: white;
