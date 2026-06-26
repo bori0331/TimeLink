@@ -225,21 +225,35 @@ year === today.getFullYear() &&
 month === today.getMonth() &&
 d === today.getDate()
 
-let eventHTML=""
+let eventHTML = "";
 
 if(events[key]){
+
 eventHTML =
-`<div class="event"
-onclick="deleteEvent('${key}')">
-${events[key]}
-</div>`
+`
+<div class="event-icons">
+
+${
+events[key]
+.map(e => e.icon)
+.join("")
+}
+
+</div>
+`;
+
 }
 
 calendar.innerHTML +=
 `
-<div class="day ${isToday ? 'today' : ''}">
+<div
+class="day ${isToday ? 'today' : ''}"
+onclick="openDay('${key}')">
+
 ${d}
+
 ${eventHTML}
+
 </div>
 `
 }
@@ -263,7 +277,13 @@ let icon="📅"
 if(type==="date") icon="❤️"
 if(type==="anniversary") icon="🎁"
 
-events[date] = {
+if (!events[date]) {
+    events[date] = [];
+}
+
+events[date].push({
+
+    icon: icon,
 
     type: type,
 
@@ -277,7 +297,7 @@ events[date] = {
 
     memo: memo
 
-};
+});
 
 localStorage.setItem("events", JSON.stringify(events))
 
@@ -561,7 +581,6 @@ function toggleMenu(event) {
     document.getElementById("overlay").classList.toggle("show");
     document.querySelector(".menu-btn").classList.toggle("open");
 }
-
 
 window.toggleMenu = toggleMenu;
 
