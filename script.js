@@ -260,6 +260,16 @@ ${eventHTML}
 
 }
 
+
+async function addEvent(){
+  const user = auth.currentUser;
+  if(!user){
+    alert("ログインしてください");
+    return;  // ← これを最初に追加
+  }
+
+}
+
 async function addEvent(){
 
 alert("予定を入れたよ！😊");
@@ -654,11 +664,3 @@ function closeModal(){
 }
 
 window.closeModal = closeModal;
-
-async function addEvent(){
-  const user = auth.currentUser;
-  if(!user){
-    alert("ログインしてください");
-    return;  // ← これを最初に追加
-  }
-  // ...以下そのまま
