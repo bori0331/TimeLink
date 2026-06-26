@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TimeLink</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Sans+JP:wght@300;400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="header-left">
+        <h1>Calendar</h1>
+        <p></p>
+    </div>
+    <button class="menu-btn" id="menuBtn" onclick="toggleMenu(event)" aria-label="メニュー">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+
+
+
+
+
+<!-- サイドメニュー（3層：clip / slide / scroll） -->
+<div class="menu-grid-clip" id="sideMenuClip">
+<div class="menu-grid-outer" id="sideMenuOuter">
+<div class="menu-grid" id="sideMenu">
+
+  <button class="close-btn" onclick="closeMenu()" aria-label="閉じる">✕</button>
+
+  <div class="grid-card" onclick="location.href='#'">
+    <span class="material-symbols-outlined">crown</span>
+    <p class="grid-label-ja">テーマ</p>
+    <p class="grid-label-en">Theme</p>
+  </div>
+
+  <div class="grid-card" 
+    onclick="location.href='couple.html'">
+    <span class="material-symbols-outlined">favorite</span>
+    <p class="grid-label-ja">カップル</p>
+    <p class="grid-label-en">Couple</p>
+  </div>
+
+  <div class="grid-card" onclick="location.href='calendar.html'">
+    <span class="material-symbols-outlined">calendar_month</span>
+    <p class="grid-label-ja">カレンダー</p>
+    <p class="grid-label-en">Calendar</p>
+  </div>
+
+  <div class="grid-card" onclick="location.href='chat.html'">
+    <span class="material-symbols-outlined">chat</span>
+    <p class="grid-label-ja">チャット</p>
+    <p class="grid-label-en">Chat</p>
+  </div>
+
+  <div class="grid-card" onclick="location.href='profile.html'">
+    <span class="material-symbols-outlined">person</span>
+    <p class="grid-label-ja">プロフィール</p>
+    <p class="grid-label-en">Profile</p>
+  </div>
+
+  <div class="grid-card" onclick="location.href='#'">
+    <span class="material-symbols-outlined">settings</span>
+    <p class="grid-label-ja">設定</p>
+    <p class="grid-label-en">Settings</p>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- オーバーレイ -->
+<div id="overlay" onclick="closeMenu()"></div>
+
+<!-- ボトムナビ -->
+<nav class="bottom-nav">
+  <button class="nav-btn" onclick="location.href='index.html'" aria-label="ホーム">
+    <span class="material-symbols-outlined">home</span>
+    <span class="nav-label">ホーム</span>
+  </button>
+  <button class="nav-btn " onclick="location.href='calendar.html'" aria-label="カレンダー">
+    <span class="material-symbols-outlined">calendar_month</span>
+    <span class="nav-label">カレンダー</span>
+  </button>
+  <button class="nav-btn active" onclick="location.href='chat.html'" aria-label="チャット">
+    <span class="material-symbols-outlined">chat</span>
+    <span class="nav-label">チャット</span>
+  </button>
+  <button class="nav-btn" onclick="location.href='profile.html'" aria-label="プロフィール">
+    <span class="material-symbols-outlined">person</span>
+    <span class="nav-label">プロフィール</span>
+  </button>
+</nav>
+
+<footer>
+  <h3>TimeLink</h3>
+  <p>Official Links</p>
+  <div class="social-links">
+    <a href="#" aria-label="LINE"><i class="fa-brands fa-line"></i></a>
+    <a href="https://www.instagram.com/?hl=ja" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" aria-label="Discord"><i class="fa-brands fa-discord"></i></a>
+    <a href="#" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+  </div>
+  <p>© TimeLink</p>
+</footer>
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
