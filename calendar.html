@@ -56,7 +56,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
 
 <h3>✦ New Event ✦</h3>
 
-<input type="date" id="eventDate" placeholder="日付">
+<input type="date" id="eventDate">
 
 <select id="eventType">
     <option value="date">❤️ デート</option>
@@ -64,7 +64,29 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     <option value="plan">📅 予定</option>
 </select>
 
-<input type="text" id="eventText" placeholder="内容">
+<input
+type="text"
+id="eventText"
+placeholder="内容">
+
+<select id="eventOwner">
+    <option value="me">🙋 私</option>
+    <option value="partner">💗 相手</option>
+    <option value="both">👫 二人</option>
+</select>
+
+<input
+type="time"
+id="eventTime">
+
+<input
+type="text"
+id="eventPlace"
+placeholder="場所（任意）">
+
+<textarea
+id="eventMemo"
+placeholder="メモ"></textarea>
 
 <button onclick="addEvent()">追加</button>
 

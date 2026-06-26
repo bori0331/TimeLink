@@ -248,18 +248,36 @@ ${eventHTML}
 
 async function addEvent(){
 
-alert("addEvent動いた！");
+alert("予定を入れたよ！😊");
 
 const date = document.getElementById("eventDate").value
 const type = document.getElementById("eventType").value
 const text = document.getElementById("eventText").value
+const owner = document.getElementById("eventOwner").value;
+const time = document.getElementById("eventTime").value;
+const place = document.getElementById("eventPlace").value;
+const memo = document.getElementById("eventMemo").value;
 
 let icon="📅"
 
 if(type==="date") icon="❤️"
 if(type==="anniversary") icon="🎁"
 
-events[date] = icon+" "+text
+events[date] = {
+
+    type: type,
+
+    text: text,
+
+    owner: owner,
+
+    time: time,
+
+    place: place,
+
+    memo: memo
+
+};
 
 localStorage.setItem("events", JSON.stringify(events))
 
