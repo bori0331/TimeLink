@@ -210,18 +210,16 @@ main {
   position: fixed;
   top: 0;
   right: 0;
-  width: min(260px, 76vw);
+  width: min(360px, 88vw);
   height: 100vh;
   z-index: 2000;
   pointer-events: none;
   clip-path: polygon(
-    0% 10%,
+    0% 0%,
     100% 0%,
     100% 100%,
-    0% 84%
-);
-  border-radius: 24px;
-  overflow: hidden;
+    0% 72%
+  );
   /* transformは一切書かない */
 }
 
@@ -252,8 +250,7 @@ main {
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   align-content: start;
-  background:linear-gradient(
-    180deg,rgba(255,255,255,.65),rgba(255,255,255,.45));
+  background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border-left: 1px solid rgba(255, 255, 255, 0.6);
@@ -280,7 +277,7 @@ main {
 
 /* グリッドカード */
 .grid-card {
-  height: 180px;
+  height: 150px;
   background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -347,9 +344,9 @@ main {
 #overlay {
   position: fixed;
   inset: 0;
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(14px);
-  -webkit-backdrop-filter:blur(14px);
+  background: rgba(200, 215, 255, 0.2);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
@@ -367,7 +364,7 @@ main {
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: min(380px, 76vw);
+  width: min(380px, 88vw);
   height: 72px;
   display: flex;
   justify-content: space-around;
@@ -473,19 +470,6 @@ footer p {
   margin-bottom: 12px;
 }
 
-#logoutBtn {
-  padding: 10px 24px;
-  background: linear-gradient(135deg, #7a9fff, #5b7fff);
-  color: white;
-  border: none;
-  border-radius: 20px;
-  font-size: 14px;
-  font-family: 'Noto Sans JP', sans-serif;
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(90, 120, 255, 0.3);
-  margin-bottom: 12px;
-}
-
 /* ── カレンダー（calendar.html用） ── */
 .calendar-wrapper {
   width: 100%;
@@ -546,7 +530,7 @@ footer p {
   padding: 8px 4px;
   border-radius: 12px;
   font-size: 13px;
-  min-height: 90px;
+  min-height: 64px;
   background: rgba(255, 255, 255, 0.5);
   border: 1px solid rgba(255, 255, 255, 0.5);
 }
@@ -578,7 +562,7 @@ footer p {
   }
 
   .menu-grid-clip {
-    width: 55vw;
+    width: 95vw;
   }
 
   .menu-grid {
@@ -628,170 +612,158 @@ footer p {
   }
 }
 
-/* calendar.html */
-
-/* ======================
-   Add Event Glass Table
-====================== */
-
-.add-event{
-max-width:700px;
-margin:45px auto 80px;
-padding:35px;
-background:rgba(255,255,255,.55);
-backdrop-filter:blur(22px);
--webkit-backdrop-filter:blur(22px);
-border:1px solid rgba(255,255,255,.7);
-border-radius:34px;
-box-shadow:0 10px 35px rgba(110,130,255,.12);
-display:flex;
-flex-direction:column;
-gap:18px;
-position:relative;
-overflow:hidden;
+/* ── textarea（カレンダーのイベント追加フォーム） ── */
+.add-event textarea {
+  width: 100%;
+  padding: 16px 18px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+  font-size: 15px;
+  color: #4b5f93;
+  font-family: 'Noto Sans JP', sans-serif;
+  outline: none;
+  resize: vertical;
+  min-height: 80px;
+  transition: .25s;
 }
 
-.add-event::before{
-content:"";
-position:absolute;
-top:-40%;
-left:-25%;
-width:160%;
-height:70%;
-background:linear-gradient(120deg,transparent,rgba(255,255,255,.55),transparent);
-transform:rotate(-10deg);
-pointer-events:none;
+.add-event textarea:focus {
+  border-color: #7a9fff;
+  box-shadow: 0 0 20px rgba(122, 159, 255, 0.18);
+  background: rgba(255, 255, 255, 0.65);
 }
 
-.add-event h3{
-font-family:'Cormorant Garamond',serif;
-font-size:34px;
-font-weight:300;
-color:#5b7fff;
-text-align:center;
-margin-bottom:10px;
-letter-spacing:1px;
+/* ── デイモーダル ── */
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 90px;
 }
 
-.add-event input, .add-event select{
-width:100%;
-padding:16px 18px;
-border-radius:16px;
-border:1px solid rgba(255,255,255,.8);
-background:rgba(255,255,255,.45);
-backdrop-filter:blur(10px);
-font-size:15px;
-color:#4b5f93;
-outline:none;
-transition:.25s;
+.modal.show {
+  display: flex;
 }
 
-.add-event input:focus, .add-event select:focus{
-border-color:#7a9fff;
-box-shadow:0 0 20px rgba(122,159,255,.18);
-background:rgba(255,255,255,.65);
+.modal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(180, 200, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-.add-event button{
-margin-top:10px;
-padding:15px;
-border:none;
-border-radius:18px;
-background:linear-gradient(135deg,#7fa6ff,#6b8cff);
-color:white;
-font-size:16px;
-font-weight:600;
-cursor:pointer;
-box-shadow:0 10px 25px rgba(90,120,255,.25);
-transition:.25s;
+.modal-content {
+  position: relative;
+  width: min(480px, 92vw);
+  max-height: 70vh;
+  overflow-y: auto;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 28px;
+  padding: 28px 24px 32px;
+  box-shadow: 0 20px 60px rgba(90, 120, 220, 0.18);
+  animation: slideUp 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.add-event button:hover{
-transform:translateY(-2px);
-box-shadow:0 14px 30px rgba(90,120,255,.35);
+@keyframes slideUp {
+  from { transform: translateY(40px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
 }
 
-/* couple.html */
-
-.couple-container{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:20px;
-
-max-width:700px;
-margin:40px auto;
-padding:20px;
+.modal-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: #5b7fff;
+  margin-bottom: 16px;
+  text-align: center;
+  letter-spacing: 0.5px;
 }
 
-.couple-card{
-background:rgba(255,255,255,.7);
-backdrop-filter:blur(15px);
-
-border-radius:25px;
-padding:30px 20px;
-
-box-shadow:0 8px 25px rgba(100,120,255,.12);
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-
-text-align:center;
-
-cursor:pointer;
-transition:.3s;
+.modal-content .close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  font-size: 22px;
+  color: #7a94cc;
+  cursor: pointer;
+  line-height: 1;
 }
 
-.couple-card:hover{
-transform:translateY(-5px);
+/* ── スケジュールカード（モーダル内） ── */
+.schedule-card {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 18px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 14px rgba(90, 120, 220, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  color: #4b5f93;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));
 }
 
-.couple-card .material-symbols-outlined{
-font-size:48px;
-margin-bottom:10px;
+.schedule-head {
+  font-size: 17px;
+  font-weight: 500;
+  color: #3a4a7a;
+  margin-bottom: 4px;
 }
 
-.couple-card input{
-width:90%;
-padding:10px;
-border:none;
-border-radius:12px;
-margin-top:10px;
+.schedule-card button {
+  margin-top: 8px;
+  align-self: flex-end;
+  padding: 7px 18px;
+  background: rgba(255, 100, 130, 0.12);
+  color: #e05a7a;
+  border: 1px solid rgba(255, 100, 130, 0.2);
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: .2s;
 }
 
-.back-btn{
-background:none;
-border:none;
-font-size:30px;
-cursor:pointer;
+.schedule-card button:hover {
+  background: rgba(255, 100, 130, 0.22);
 }
 
-@media(max-width:600px){
-
-.couple-container{
-grid-template-columns:1fr;
-padding:15px;
-gap:15px;
+/* モーダル内「＋追加」ボタン */
+#modalBody > p {
+  text-align: center;
+  color: #8fa3c8;
+  margin-bottom: 12px;
+  font-size: 14px;
 }
 
-.couple-card{
-padding:25px 15px;
+#modalBody > button {
+  display: block;
+  margin: 0 auto;
+  padding: 10px 28px;
+  background: linear-gradient(135deg, #7a9fff, #5b7fff);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 15px;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(90, 120, 255, 0.28);
 }
 
-.add-event{
-margin:30px 15px 70px;
-padding:25px;
-border-radius:26px;
-}
-
-.add-event h3{
-font-size:28px;
-}
-
-.add-event input, .add-event select{
-padding:14px;
-font-size:14px;
-}
-
+/* イベントアイコン（カレンダーマス内） */
+.event-icons {
+  font-size: 11px;
+  margin-top: 3px;
+  line-height: 1.4;
+  word-break: break-all;
 }
