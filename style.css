@@ -460,7 +460,20 @@ footer p {
 }
 
 /* ── ログインボタン ── */
-#loginBtn #logoutBtn {
+#loginBtn {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #7a9fff, #5b7fff);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 14px;
+  font-family: 'Noto Sans JP', sans-serif;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(90, 120, 255, 0.3);
+  margin-bottom: 12px;
+}
+
+#logoutBtn {
   padding: 10px 24px;
   background: linear-gradient(135deg, #7a9fff, #5b7fff);
   color: white;
