@@ -3,119 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TimeLink — Calendar</title>
+<title>TimeLink</title>
 <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet"
+href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Noto+Sans+JP:wght@300;400;500&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<!-- ヘッダー -->
 <header class="header">
-  <div class="header-left">
-    <h1>Calendar</h1>
-  </div>
-  <button class="menu-btn" id="menuBtn" onclick="toggleMenu(event)" aria-label="メニュー">
+    <div class="header-left">
+        <h1>Calendar</h1>
+        <p></p>
+    </div>
+    <button class="menu-btn" id="menuBtn" onclick="toggleMenu(event)" aria-label="メニュー">
     <span></span>
     <span></span>
     <span></span>
   </button>
 </header>
 
-<!-- 月ナビゲーション -->
 <div class="calendar-header">
-  <button onclick="prevMonth()">◀</button>
-  <h2 id="monthYear"></h2>
-  <button onclick="nextMonth()">▶</button>
+
+<button onclick="prevMonth()">◀</button>
+
+<h2 id="monthYear"></h2>
+
+<button onclick="nextMonth()">▶</button>
+
 </div>
 
-<!-- カレンダー本体 -->
 <div class="calendar-wrapper">
-  <div class="weekdays">
-    <div style="color:#e07a7a">日</div>
-    <div>月</div>
-    <div>火</div>
-    <div>水</div>
-    <div>木</div>
-    <div>金</div>
-    <div style="color:#7a9fff">土</div>
-  </div>
-  <div id="calendar"></div>
+
+<div class="weekdays">
+  <div>日</div>
+  <div>月</div>
+  <div>火</div>
+  <div>水</div>
+  <div>木</div>
+  <div>金</div>
+  <div>土</div>
 </div>
 
-<!-- イベント追加フォーム -->
+<div id="calendar"></div>
+
+</div>
+
 <div class="add-event">
-  <h3>✦ New Event ✦</h3>
-  <input type="date" id="eventDate">
-  <select id="eventType">
+
+<h3>✦ New Event ✦</h3>
+
+<input type="date" id="eventDate">
+
+<select id="eventType">
     <option value="date">❤️ デート</option>
     <option value="anniversary">🎁 記念日</option>
     <option value="plan">📅 予定</option>
-  </select>
-  <input type="text" id="eventText" placeholder="内容">
-  <select id="eventOwner">
+</select>
+
+<input
+type="text"
+id="eventText"
+placeholder="内容">
+
+<select id="eventOwner">
     <option value="me">🙋 私</option>
     <option value="partner">💗 相手</option>
     <option value="both">👫 二人</option>
-  </select>
-  <input type="time" id="eventTime">
-  <input type="text" id="eventPlace" placeholder="場所（任意）">
-  <textarea id="eventMemo" placeholder="メモ（任意）"></textarea>
-  <button onclick="addEvent()">追加</button>
+</select>
+
+<input
+type="time"
+id="eventTime">
+
+<input
+type="text"
+id="eventPlace"
+placeholder="場所（任意）">
+
+<textarea
+id="eventMemo"
+placeholder="メモ"></textarea>
+
+<button onclick="addEvent()">追加</button>
+
 </div>
 
-<!-- サイドメニュー -->
+<!-- サイドメニュー（3層：clip / slide / scroll） -->
 <div class="menu-grid-clip" id="sideMenuClip">
 <div class="menu-grid-outer" id="sideMenuOuter">
 <div class="menu-grid" id="sideMenu">
+
   <button class="close-btn" onclick="closeMenu()" aria-label="閉じる">✕</button>
+
   <div class="grid-card" onclick="location.href='#'">
     <span class="material-symbols-outlined">crown</span>
     <p class="grid-label-ja">テーマ</p>
     <p class="grid-label-en">Theme</p>
   </div>
-  <div class="grid-card" onclick="location.href='couple.html'">
+
+  <div class="grid-card" 
+    onclick="location.href='couple.html'">
     <span class="material-symbols-outlined">favorite</span>
     <p class="grid-label-ja">カップル</p>
     <p class="grid-label-en">Couple</p>
   </div>
+
   <div class="grid-card" onclick="location.href='calendar.html'">
     <span class="material-symbols-outlined">calendar_month</span>
     <p class="grid-label-ja">カレンダー</p>
     <p class="grid-label-en">Calendar</p>
   </div>
+
   <div class="grid-card" onclick="location.href='chat.html'">
     <span class="material-symbols-outlined">chat</span>
     <p class="grid-label-ja">チャット</p>
     <p class="grid-label-en">Chat</p>
   </div>
+
   <div class="grid-card" onclick="location.href='profile.html'">
     <span class="material-symbols-outlined">person</span>
     <p class="grid-label-ja">プロフィール</p>
     <p class="grid-label-en">Profile</p>
   </div>
+
   <div class="grid-card" onclick="location.href='#'">
     <span class="material-symbols-outlined">settings</span>
     <p class="grid-label-ja">設定</p>
     <p class="grid-label-en">Settings</p>
   </div>
+
 </div>
 </div>
 </div>
 
 <!-- オーバーレイ -->
 <div id="overlay" onclick="closeMenu()"></div>
-
-<!-- デイモーダル -->
-<div id="dayModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal()">✕</span>
-    <h2 id="modalDate"></h2>
-    <div id="modalBody"></div>
-  </div>
-</div>
 
 <!-- ボトムナビ -->
 <nav class="bottom-nav">
@@ -136,6 +162,25 @@
     <span class="nav-label">プロフィール</span>
   </button>
 </nav>
+
+<div id="dayModal" class="modal">
+
+    <div class="modal-content">
+
+        <span class="close"
+        onclick="closeModal()">
+
+        ✕
+
+        </span>
+
+        <h2 id="modalDate"></h2>
+
+        <div id="modalBody"></div>
+
+    </div>
+
+</div>
 
 <footer>
   <h3>TimeLink</h3>
