@@ -229,6 +229,8 @@ let eventHTML = "";
 
 if(events[key]){
 
+console.log(key, events[key]);
+
 eventHTML =
 `
 <div class="event-icons">
