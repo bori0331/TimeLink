@@ -743,7 +743,7 @@ function openDay(key){
 
         body.innerHTML = list.map((event,index)=>`
 
-        <div class="schedule-card">
+        <div class="schedule-card ${event.type}">
 
             <div class="schedule-head">
                 ${event.icon}

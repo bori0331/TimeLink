@@ -1078,6 +1078,120 @@ footer p {
   background: rgba(255, 100, 130, 0.22);
 }
 
+/* ❤️ デート */
+.schedule-card.date{
+  border-left:6px solid #ff6b9d;
+  background:rgba(255,235,243,.75);
+}
+
+/* 🎁 記念日 */
+.schedule-card.anniversary{
+  border-left:6px solid #f7c948;
+  background:rgba(255,248,220,.75);
+}
+
+/* 📅 予定 */
+.schedule-card.plan{
+  border-left:6px solid #6aa8ff;
+  background:rgba(235,245,255,.75);
+}
+
+/* 💼 仕事 */
+.schedule-card.work{
+  border-left:6px solid #4b7bec;
+  background:rgba(228,239,255,.75);
+}
+
+/* 7⃣ バイト */
+.schedule-card.parttime{
+  border-left:6px solid #ff9f43;
+  background:rgba(255,243,228,.75);
+}
+
+/* 🏫 学校 */
+.schedule-card.school{
+  border-left:6px solid #6c63ff;
+  background:rgba(239,236,255,.75);
+}
+
+/* 📝 試験 */
+.schedule-card.exam{
+  border-left:6px solid #8e44ad;
+  background:rgba(244,233,255,.75);
+}
+
+/* 🏥 病院 */
+.schedule-card.hospital{
+  border-left:6px solid #ff5a5f;
+  background:rgba(255,235,235,.75);
+}
+
+/* 🎂 誕生日 */
+.schedule-card.birthday{
+  border-left:6px solid #ff6fb5;
+  background:rgba(255,238,246,.75);
+}
+
+/* 🎉 イベント */
+.schedule-card.event{
+  border-left:6px solid #ffb347;
+  background:rgba(255,245,225,.75);
+}
+
+/* 🎵 ライブ */
+.schedule-card.concert{
+  border-left:6px solid #a55eea;
+  background:rgba(243,234,255,.75);
+}
+
+/* 🎆 お祭り */
+.schedule-card.festival{
+  border-left:6px solid #ff784f;
+  background:rgba(255,239,230,.75);
+}
+
+/* ✈️ 旅行 */
+.schedule-card.trip{
+  border-left:6px solid #00bcd4;
+  background:rgba(228,250,255,.75);
+}
+
+/* 🎬 映画 */
+.schedule-card.movie{
+  border-left:6px solid #576574;
+  background:rgba(238,241,244,.75);
+}
+
+/* 🛍️ 買い物 */
+.schedule-card.shopping{
+  border-left:6px solid #ffb142;
+  background:rgba(255,248,231,.75);
+}
+
+/* 🍽️ ごはん */
+.schedule-card.restaurant{
+  border-left:6px solid #2ecc71;
+  background:rgba(233,250,239,.75);
+}
+
+/* 🚗 ドライブ */
+.schedule-card.drive{
+  border-left:6px solid #00a8ff;
+  background:rgba(232,247,255,.75);
+}
+
+/* 👨‍👩‍👧 家族 */
+.schedule-card.family{
+  border-left:6px solid #20bf6b;
+  background:rgba(232,251,239,.75);
+}
+
+/* ⭐ その他 */
+.schedule-card.other{
+  border-left:6px solid #95a5a6;
+  background:rgba(245,245,245,.75);
+}
+
 /* 予定なし表示 */
 #modalBody > p {
   text-align: center;
