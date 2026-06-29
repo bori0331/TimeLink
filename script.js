@@ -322,10 +322,83 @@ const time = document.getElementById("eventTime").value;
 const place = document.getElementById("eventPlace").value;
 const memo = document.getElementById("eventMemo").value;
 
-let icon="📅"
+let icon = "📅";
 
-if(type==="date") icon="❤️"
-if(type==="anniversary") icon="🎁"
+switch(type){
+
+case "date":
+    icon = "❤️";
+    break;
+
+case "anniversary":
+    icon = "🎁";
+    break;
+
+case "work":
+    icon = "💼";
+    break;
+
+case "parttime":
+    icon = "7⃣";
+    break;
+
+case "school":
+    icon = "🏫";
+    break;
+
+case "exam":
+    icon = "📝";
+    break;
+
+case "hospital":
+    icon = "🏥";
+    break;
+
+case "birthday":
+    icon = "🎂";
+    break;
+
+case "event":
+    icon = "🎉";
+    break;
+
+case "concert":
+    icon = "🎵";
+    break;
+
+case "festival":
+    icon = "🎆";
+    break;
+
+case "trip":
+    icon = "✈️";
+    break;
+
+case "movie":
+    icon = "🎬";
+    break;
+
+case "shopping":
+    icon = "🛍️";
+    break;
+
+case "restaurant":
+    icon = "🍽️";
+    break;
+
+case "drive":
+    icon = "🚗";
+    break;
+
+case "family":
+    icon = "👨‍👩‍👧";
+    break;
+
+case "other":
+    icon = "⭐";
+    break;
+
+}
 
 if (!events[date]) {
     events[date] = [];
