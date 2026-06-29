@@ -440,13 +440,17 @@ createCalendar()
 window.prevMonth = prevMonth;
 window.nextMonth = nextMonth;
 
-async function deleteEvent(key,index){
+async function deleteEvent(key, index){
 
-    if(!confirm("削除しますか？")) return;
+    if(!confirm("この予定を削除しますか？")){
+        return;
+    }
 
-    events[key].splice(index,1);
+    // 配列から1件だけ削除
+    events[key].splice(index, 1);
 
-    if(events[key].length===0){
+    // その日の予定が0件なら日付ごと削除
+    if(events[key].length === 0){
         delete events[key];
     }
 
@@ -455,11 +459,28 @@ async function deleteEvent(key,index){
         JSON.stringify(events)
     );
 
-    console.log("Firestore削除保存成功");
+    const user = auth.currentUser;
 
-    createCalendar();
+    if(user){
+
+        const userSnap = await getDoc(
+            doc(db,"users",user.uid)
+        );
+
+        const coupleId = userSnap.data().coupleId;
+
+        await setDoc(
+            doc(db,"couples",coupleId),
+            {
+                events: events
+            },
+            { merge:true }
+        );
+
+    }
 
     closeModal();
+    createCalendar();
 
 }
 
