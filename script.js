@@ -141,12 +141,60 @@ if(userSnap.exists()){
     );
 
     if(coupleSnap.exists()){
-      
-      events = coupleSnap.data().events || {};
-      console.log("Firesore読み込み成功",events);
-      
-      createCalendar();
+
+    events = coupleSnap.data().events || {};
+
+    // 昔のデータを新しい形式へ変換
+    for (const key in events) {
+
+        // すでに配列なら何もしない
+        if (Array.isArray(events[key])) continue;
+
+        // 昔の文字列形式
+        if (typeof events[key] === "string") {
+
+            events[key] = [{
+                icon: events[key],
+                text: "",
+                owner: "",
+                time: "",
+                place: "",
+                memo: "",
+                type: "plan"
+            }];
+
+        }
+
+        // 昔のオブジェクト形式
+        else {
+
+            events[key] = [{
+                icon:
+                    events[key].type === "date" ? "❤️" :
+                    events[key].type === "anniversary" ? "🎁" :
+                    "📅",
+
+                ...events[key]
+            }];
+
+        }
     }
+
+    // Firestoreも新形式で更新
+    await setDoc(
+        doc(db, "couples", coupleId),
+        {
+            events: events
+        },
+        {
+            merge: true
+        }
+    );
+
+    console.log("Firestore読み込み成功", events);
+
+    createCalendar();
+}
     
   }
 
