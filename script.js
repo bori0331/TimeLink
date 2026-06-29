@@ -709,3 +709,12 @@ function closeModal(){
 }
 
 window.closeModal = closeModal;
+
+function showAddForm(key) {
+    closeModal();
+    const el = document.getElementById("eventDate");
+    if (el) el.value = key;
+    document.querySelector(".add-event")
+        ?.scrollIntoView({ behavior: "smooth" });
+}
+window.showAddForm = showAddForm;
