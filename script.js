@@ -717,4 +717,5 @@ function showAddForm(key) {
     document.querySelector(".add-event")
         ?.scrollIntoView({ behavior: "smooth" });
 }
+
 window.showAddForm = showAddForm;
