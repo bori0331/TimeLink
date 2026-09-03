@@ -519,6 +519,12 @@ async function deleteEvent(key, index){
         return;
     }
 
+    // 削除対象の日付が存在するか確認
+    if(!events[key]){
+        console.log("削除対象の日付がありません:", key);
+        return;
+    }
+
     // 配列から1件だけ削除
     events[key].splice(index, 1);
 
@@ -527,10 +533,13 @@ async function deleteEvent(key, index){
         delete events[key];
     }
 
+    // ローカル保存
     localStorage.setItem(
         "events",
         JSON.stringify(events)
     );
+
+    console.log("削除後:", events);
 
     const user = auth.currentUser;
 
@@ -540,15 +549,37 @@ async function deleteEvent(key, index){
             doc(db,"users",user.uid)
         );
 
-        const coupleId = userSnap.data().coupleId;
+        if(userSnap.exists()){
 
-        await setDoc(
-            doc(db,"couples",coupleId),
-            {
-                events: events
-            },
-            { merge:true }
-        );
+            const coupleId = userSnap.data().coupleId;
+
+            if(coupleId){
+
+                await setDoc(
+                    doc(db,"couples",coupleId),
+                    {
+                        events: events
+                    },
+                    { merge:true }
+                );
+
+                console.log("Firestore削除保存成功");
+
+            }else{
+
+                console.log("coupleIdがありません");
+
+            }
+
+        }else{
+
+            console.log("ユーザー情報がありません");
+
+        }
+
+    }else{
+
+        console.log("ログインユーザーがいません");
 
     }
 
