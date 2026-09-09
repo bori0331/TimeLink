@@ -565,6 +565,16 @@ async function deleteEvent(key, index){
 
 console.log("Firestore削除保存成功");
 
+// 保存した直後にFirestoreからもう一度読み込む
+const verifySnap = await getDoc(
+    doc(db,"couples",coupleId)
+);
+
+console.log(
+    "Firestore保存後の実データ:",
+    verifySnap.data().events
+);
+
 // 保存した直後にFirestoreから読み直して確認
 const checkSnap = await getDoc(
     doc(db,"couples",coupleId)
