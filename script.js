@@ -556,14 +556,24 @@ async function deleteEvent(key, index){
             if(coupleId){
 
                 await setDoc(
-                    doc(db,"couples",coupleId),
-                    {
-                        events: events
-                    },
-                    { merge:true }
-                );
+    doc(db,"couples",coupleId),
+    {
+        events: events
+    },
+    { merge:true }
+);
 
-                console.log("Firestore削除保存成功");
+console.log("Firestore削除保存成功");
+
+// 保存した直後にFirestoreから読み直して確認
+const checkSnap = await getDoc(
+    doc(db,"couples",coupleId)
+);
+
+console.log(
+    "Firestore保存後のevents:",
+    checkSnap.data().events
+);
 
             }else{
 
