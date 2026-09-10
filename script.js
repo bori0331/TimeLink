@@ -525,6 +525,9 @@ async function deleteEvent(key, index){
         return;
     }
 
+    console.log("削除対象:", key, index);
+    console.log("削除前:", JSON.stringify(events[key]));
+
     // 配列から1件だけ削除
     events[key].splice(index, 1);
 
@@ -539,7 +542,7 @@ async function deleteEvent(key, index){
         JSON.stringify(events)
     );
 
-    console.log("削除後:", events);
+    console.log("削除後JSON:", JSON.stringify(events));
 
     const user = auth.currentUser;
 
@@ -573,16 +576,6 @@ const verifySnap = await getDoc(
 console.log(
     "Firestore保存後の実データ:",
     verifySnap.data().events
-);
-
-// 保存した直後にFirestoreから読み直して確認
-const checkSnap = await getDoc(
-    doc(db,"couples",coupleId)
-);
-
-console.log(
-    "Firestore保存後のevents:",
-    checkSnap.data().events
 );
 
             }else{
