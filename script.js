@@ -575,8 +575,8 @@ const verifySnap = await getDoc(
 
 console.log(
     "Firestore保存後の実データ:",
-    verifySnap.data().events
-);
+    JSON.stringify(verifySnap.data().events
+));
 
             }else{
 
