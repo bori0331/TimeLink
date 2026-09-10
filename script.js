@@ -559,12 +559,10 @@ async function deleteEvent(key, index){
             if(coupleId){
 
                 await setDoc(
-    doc(db,"couples",coupleId),
-    {
-        events: events
-    },
-    { merge:true }
-);
+                doc(db,"couples",coupleId),
+                {
+                events: events
+                },);
 
 console.log("Firestore削除保存成功");
 
